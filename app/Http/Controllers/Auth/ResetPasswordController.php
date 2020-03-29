@@ -98,7 +98,7 @@ class ResetPasswordController extends Controller
     {
         return [
             'token' => 'required',
-            'c_headerb' => 'required|email|exists:Account,c_id,c_status,A',
+            'c_headerb' => 'required|email|exists:Account,c_headerb,c_status,A',
             'c_headera' => 'required|confirmed|min:8',
         ];
     }

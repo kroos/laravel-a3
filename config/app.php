@@ -158,8 +158,8 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
 
 // using this to override Illuminate\Auth\Passwords\PasswordBrokerManager
-        Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,       // yg asal
-        // App\Providers\Custom\AccountPasswordResetServiceProvider::class,
+        // Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,       // yg asal
+        App\Providers\Custom\AccountPasswordResetServiceProvider::class,
 
 
         Illuminate\Session\SessionServiceProvider::class,
