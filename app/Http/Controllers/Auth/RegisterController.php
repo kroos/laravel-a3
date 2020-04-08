@@ -55,9 +55,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'c_id' => ['required', 'string', 'min:8', 'unique:Account'],
-            'c_sheadera' => ['required', 'string', 'max:255'],
-            'c_headerb' => ['required', 'string', 'email', 'max:255', 'unique:Account'],
+            'c_id' => ['required', 'string', 'min:8', 'unique:Account,c_id'],
+            'c_sheadera' => ['required', 'string', 'max:100'],
+            'c_headerb' => ['required', 'email', 'unique:Account,c_headerb'],
             'c_headera' => ['required', 'string', 'min:8', 'confirmed'],
         ],
         [
@@ -65,7 +65,7 @@ class RegisterController extends Controller
             'c_headerb.unique' => 'Please use another Email Address.',
         ],
         [
-            'c_id' => 'Username',                                                                               // attributes
+            'c_id' => 'Username',                   // attributes
             'c_headera' => 'Password',
             'c_sheadera' => 'Name',
             'c_headerb' => 'E-Mail Address'
@@ -88,28 +88,11 @@ class RegisterController extends Controller
             'c_headera' => $data['c_headera'],
             'c_sheaderb' => 5,
             'c_sheaderc' => 'banned_password',
-            'c_headerc' => Str::random(60),                                                                    // RjBb9vr6wCOySXeGdu7wyC7jwWEy5ofQ1YIvLiO2KKvgGxKh5CEn50hSrCQx
+            'c_headerc' => Str::random(60),         // RjBb9vr6wCOySXeGdu7wyC7jwWEy5ofQ1YIvLiO2KKvgGxKh5CEn50hSrCQx
             'c_status' => 'A',
             'm_body' => 'reserve',
             'salary' => Carbon::now(),
             'last_salary' => Carbon::now()
         ]);
-    }
-
-    public function email(Request $request)
-    {
-        $valid = true;
-        if($request->has('c_headerb')){
-            $acc1 = Account::where($request->only('c_headerb'))->get();
-            if ($acc1->count() == 1) {
-                $valid = false;
-            }
-        } elseif ($request->has('c_id')) {
-            $acc2 = Account::where($request->only('c_id'))->get();
-            if ($acc2->count() == 1) {
-                $valid = false;
-            }
-        }
-        return response()->json(['valid' => $valid]);
     }
 }

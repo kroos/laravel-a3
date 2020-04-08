@@ -12,7 +12,7 @@
 		</div>
 		@endif
 
-		You are logged in!
+		<p>You are logged in!</p>
 	</div>
 </div>
 

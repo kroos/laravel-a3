@@ -124,7 +124,7 @@ $("#form").bootstrapValidator({
                 },
                 remote: {
                     type: 'GET',
-                    url:'{{ route('remote.email') }}',
+                    url:'{{ route('remote.emailusername') }}',
                     message: 'Please use another username. ',
                     delay: 50
                 },
@@ -141,7 +141,7 @@ $("#form").bootstrapValidator({
                 },
                 remote: {
                     type: 'GET',
-                    url:'{{ route('remote.email') }}',
+                    url:'{{ route('remote.emailusername') }}',
                     message: 'Please use another email. ',
                     delay: 50
                 },

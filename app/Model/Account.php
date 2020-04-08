@@ -66,8 +66,6 @@ class Account extends Authenticatable implements MustVerifyEmail
 	public function getAuthPassword()
 	{
 		return $this->c_headera;
-		// return 'c_headera';
-		// return $this->attributes['c_headera'];
 	}
 
     /**
@@ -86,9 +84,50 @@ class Account extends Authenticatable implements MustVerifyEmail
 		return $this->c_headerb;
 	}
 
-
 //////////////////////////////////////////////////////////////////////////////////
 	// relation
+	// has
+	public function hasmanycharac()
+	{
+		return $this->hasMany('App\Model\Charac0', 'c_sheaderb');
+	}
+
+	public function hasonestorage()
+	{
+		return $this->hasOne('App\Model\ItemStorage0', 'c_id');
+	}
+
+	public function hasmanycharinfo()
+	{
+		return $this->hasMany('App\Model\CharInfo', 'AccountID');
+	}
+
+	public function hasmanyrcvresult()
+	{
+		return $this->hasMany('App\Model\RcvResult', 'AccountName');
+	}
+
+	public function hasmanypost()
+	{
+		return $this->hasMany('App\Model\Post', 'author');
+	}
+
+	public function hasmanycomment()
+	{
+		return $this->hasMany('App\Model\PostComment', 'author');
+	}
+
+
+//////////////////////////////////////////////////////////////////////////////////
+	// manytomanyf
+//////////////////////////////////////////////////////////////////////////////////
+	// belongsto
+
+	public function belongsToRoles()
+	{
+		return $this->belongsTo('App\Model\Roles', 'c_sheaderb', 'id');
+	}
+
 //////////////////////////////////////////////////////////////////////////////////
 	// acl
 
@@ -109,7 +148,14 @@ class Account extends Authenticatable implements MustVerifyEmail
 	// 	}
 	// }
 
-
+	public function onlyProfileOwner($id)
+	{
+		if (\Auth::user()->c_id == $id) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 
 
