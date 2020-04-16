@@ -17,12 +17,20 @@ class Charac0 extends Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// public function hasoneaccount()
-	// {
-	// 	return $this->hasOne('App\Model\Account', 'c_sheaderb');
-	// }
+	public function hasmanyhstable()
+	{
+		return $this->hasOne('App\Model\HSTable', 'MasterName');
+	}
 
+	public function hasmanyhsstonetable()
+	{
+		return $this->hasOne('App\Model\HSStoneTable', 'MasterName');
+	}
 
+	public function hasmanyfriend()
+	{
+		return $this->hasMany('App\Model\Friend0', 'CharName');
+	}
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 

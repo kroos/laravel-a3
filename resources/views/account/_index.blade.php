@@ -54,8 +54,6 @@
 @endif
 	</div>
 	<div class="col-12">
-		<a href="{{ route('account.password') }}" class="btn btn-primary float-right">Change Password</a>
-		&nbsp;
 		<span class="btn btn-danger float-right" id="deactivate" data-c_id="{!! \Auth::user()->c_id !!}">Deactivate Account</span>
 	</div>
 </div>

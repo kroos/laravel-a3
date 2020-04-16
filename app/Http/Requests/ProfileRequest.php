@@ -17,8 +17,8 @@ class ProfileRequest extends FormRequest
 		return [
 					'c_sheadera' => 'required|string|max:100',
 					'c_headerb' => 'required|email|unique:Account,c_headerb,'.$this->account['c_id'].',c_id',
-					'curr_c_headera' => 'required|string',
-					'c_headera' => 'required|string|min:8|confirmed',
+					'curr_c_headera' => 'required_with_all:c_headera',
+					'c_headera' => 'required_with_all:curr_c_headera|nullable|min:8|confirmed',
 		];
 	}
 

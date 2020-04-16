@@ -24,34 +24,43 @@
 $('#form').bootstrapValidator({
 	fields: {
 		c_sheadera: {
-            validators: {
-                stringLength: {
-                    min: 4,
-                    message: 'The name should be greater than 4. '
-                },
-                notEmpty: {
-                    message: 'Please input your name. '
-                },
-            }
+			validators: {
+				stringLength: {
+					min: 4,
+					message: 'The name should be greater than 4. '
+				},
+				notEmpty: {
+					message: 'Please input your name. '
+				},
+			}
 		},
 		c_headerb: {
-            validators: {
-                notEmpty: {
-                    message: 'Please insert your valid email. '
-                },
-                regexp: {
-                    regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: 'Please insert your valid email address. '
-                },
-				// remote: {
-				//     type: 'GET',
-				//     url:'{{ route('remote.emailusername') }}',
-				//     message: 'Please use another email. ',
-				//     delay: 50
-				// },
-            }
+			validators: {
+				notEmpty: {
+					message: 'Please insert your valid email. '
+				},
+				regexp: {
+					regexp: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+					message: 'Please insert your valid email address. '
+				},
+			}
 		},
-
+		c_headera: {
+			validators:{
+				    // identical: {
+					// field: 'c_headera_confirmation',
+					// message: 'The password and its confirmation are not the same. '
+				}
+			}
+		},
+		c_headera_confirmation: {
+			validators:{
+				    // identical: {
+					// field: 'c_headera',
+					// message: 'The password and its confirmation are not the same. '
+				}
+			}
+		}
 	}
 });
 

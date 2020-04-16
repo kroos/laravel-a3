@@ -5,14 +5,16 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" id="form" autocomplete="off" enctype="multipart/form-data" aria-label="{{ __('Login') }}"">
+        @include('layouts.info')
+        @include('layouts.errorform')
+                    <form method="POST" action="{{ route('register') }}" id="form" autocomplete="off" enctype="multipart/form-data" aria-label="{{ __('Login') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('c_sheadera') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('c_sheadera') is-invalid @enderror" name="c_sheadera" value="{{ old('c_sheadera') }}" required autocomplete="c_sheadera" autofocus>
+                                <input id="name" type="text" class="form-control {{ $errors->has('c_sheadera') ? ' is-invalid' : NULL }}" name="c_sheadera" value="{{ old('c_sheadera') }}" required autocomplete="c_sheadera" autofocus>
 
                                 @error('c_sheadera')
                                     <span class="invalid-feedback" role="alert">
@@ -22,11 +24,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
                             <label for="c_id" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
-                                <input id="c_id" type="text" class="form-control @error('c_id') is-invalid @enderror" name="c_id" value="{{ old('c_id') }}" required autocomplete="c_id" autofocus>
+                                <input id="c_id" type="text" class="form-control{{ $errors->has('c_id') ? ' is-invalid' : NULL }}" name="c_id" value="{{ old('c_id') }}" required autocomplete="c_id" autofocus>
 
                                 @error('c_id')
                                     <span class="invalid-feedback" role="alert">
@@ -36,11 +38,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('c_headerb') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('c_headerb') is-invalid @enderror" name="c_headerb" value="{{ old('c_headerb') }}" required autocomplete="c_headerb">
+                                <input id="email" type="email" class="form-control {{ $errors->has('c_headerb') ? ' is-invalid' : NULL }}" name="c_headerb" value="{{ old('c_headerb') }}" required autocomplete="c_headerb">
 
                                 @error('c_headerb')
                                     <span class="invalid-feedback" role="alert">
@@ -50,11 +52,11 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('c_headera') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('c_headera') is-invalid @enderror" name="c_headera" required autocomplete="new-c_headera">
+                                <input id="password" type="password" class="form-control{{ $errors->has('c_headera') ? ' is-invalid' : NULL }}" name="c_headera" required autocomplete="c_headera">
 
                                 @error('c_headera')
                                     <span class="invalid-feedback" role="alert">
@@ -64,11 +66,26 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <div class="form-group row {{ $errors->has('c_headera_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="c_headera_confirmation" required autocomplete="new-c_headera">
+                            </div>
+                        </div>
+
+                        <div class="form-check {{ $errors->has('tnc') ? ' has-error' : '' }}">
+                            <div class="col-6 offset-4 pretty p-icon p-round p-pulse">
+                                <input type="checkbox" name="tnc" class="form-check-input{{ $errors->has('tnc') ? ' is-invalid' : NULL }}" value="1" id="tnc" />
+                                <div class="state p-success">
+                                    <i class="icon mdi mdi-check"></i>
+                                    <label class="form-check-label" for="tnc">I Agree to terms and conditions of {{ config('app.name') }}</label>
+                                </div>
+                                @error('tnc')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

@@ -15,14 +15,43 @@ use Carbon\CarbonPeriod;
 			<!-- Left Side Of Navbar -->
 			<ul class="navbar-nav mr-auto">
 			@guest
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('news') }}">News <i class="fas fa-newspaper"></i></a>
+				<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Public News <i class="fas fa-rss"></i></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('news') }}">News <i class="fas fa-newspaper"></i></a>
+						<a class="dropdown-item" href="{{ route('announcement') }}">Announcement <i class="fas fa-bullhorn"></i></a>
+						<a class="dropdown-item" href="{{ route('download') }}">Download <i class="fas fa-download"></i></a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('announcement') }}">Announcement <i class="fas fa-bullhorn"></i></a>
+
+				<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Server Info <i class="fas fa-info-circle"></i></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('serverstatus') }}">Server Status <i class="far fa-lightbulb"></i></a>
+						<a class="dropdown-item" href="{{ route('playeronline') }}">Player Online <i class="fas fa-plug"></i></a>
+					</div>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="{{ route('download') }}">Download <i class="fas fa-download"></i></a>
+
+				<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Hall Of Fame <i class="fas fa-rss"></i></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('heroesboard') }}">Board Of Heroes <i class="fas fa-newspaper"></i></a>
+						<a class="dropdown-item" href="{{ route('mercboard') }}">Board Of Mercenaries <i class="fas fa-bullhorn"></i></a>
+					</div>
+				</li>
+
+			@else
+				<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Public News <i class="fas fa-rss"></i></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('usernews') }}">News <i class="fas fa-newspaper"></i></a>
+						<a class="dropdown-item" href="{{ route('announcement') }}">Announcement <i class="fas fa-bullhorn"></i></a>
+						<a class="dropdown-item" href="{{ route('download') }}">Download <i class="fas fa-download"></i></a>
+					</div>
 				</li>
 			@endguest
 			</ul>
@@ -31,24 +60,35 @@ use Carbon\CarbonPeriod;
 			<ul class="navbar-nav ml-auto">
 				<!-- Authentication Links -->
 			@guest
-				<li class="nav-item">
+				<li class="nav-item dropdown">
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>User Login & Registration <i class="far fa-user"></i></a>
+
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="{{ route('login') }}">Sign In <i class="fas fa-sign-in-alt"></i></a>
+						@if (Route::has('register'))
+						<a class="dropdown-item" href="{{ route('register') }}">Sign Up <i class="fas fa-user-plus"></i></a>
+						@endif
+					</div>
+				</li>
+
+<!-- 				<li class="nav-item">
 					<a class="nav-link" href="{{ route('login') }}">Sign In <i class="fas fa-sign-in-alt"></i></a>
 				</li>
 				@if (Route::has('register'))
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('register') }}">Sign Up <i class="fas fa-user-plus"></i></a>
 					</li>
-				@endif
+				@endif -->
 			@else
 
-				<li class="nav-item">
+<!-- 				<li class="nav-item">
 					<a class="nav-link" href="">Fault Report</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="">Switches Access</a>
-				</li>
+				</li> -->
 				<li class="nav-item dropdown">
-					<a id="navbarDropdown" class="btn btn-sm btn-info text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ \Auth::user()->c_sheadera }}
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>{{ \Auth::user()->c_sheadera }}
 						<span class="badge badge-danger">1</span>
 						<span class="caret"></span>
 					</a>

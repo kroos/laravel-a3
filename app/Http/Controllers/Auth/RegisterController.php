@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'c_sheadera' => ['required', 'string', 'max:100'],
             'c_headerb' => ['required', 'email', 'unique:Account,c_headerb'],
             'c_headera' => ['required', 'string', 'min:8', 'confirmed'],
+            'tnc' => ['required', 'accepted']
         ],
         [
             'c_id.unique' => 'Please use another Username.',
@@ -68,7 +69,8 @@ class RegisterController extends Controller
             'c_id' => 'Username',                   // attributes
             'c_headera' => 'Password',
             'c_sheadera' => 'Name',
-            'c_headerb' => 'E-Mail Address'
+            'c_headerb' => 'E-Mail Address',
+            'tnc' => 'Terms And Conditions'
         ]);
     }
 

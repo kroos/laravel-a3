@@ -25,9 +25,9 @@
 <div class="form-group row {{ $errors->has('curr_c_headera') ? ' has-error' : '' }}">
 	{{ Form::label( 'pri1', 'Current Password : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 	<div class="col-6">
-		{{ Form::password('curr_c_headera', ['class' => 'form-control'.($errors->has('curr_c_headera') ? ' is-invalid' : NULL), 'id' => 'pri1', 'placeholder' => 'Current Password', 'aria-describedby' => 'passwordHelpBlock', 'autofocus']) }}
-		<small id="passwordHelpBlock" class="form-text text-muted ">
-			If you do not wish to change your password, just leave this input.
+		{{ Form::password('curr_c_headera', ['class' => 'form-control'.($errors->has('curr_c_headera') ? ' is-invalid' : NULL), 'id' => 'pri1', 'placeholder' => 'Current Password', 'aria-describedby' => 'currpasswordHelpBlock', 'autofocus']) }}
+		<small id="currpasswordHelpBlock" class="form-text text-muted ">
+			If you do not wish to change your password, just leave this Current Password input.
 		</small>
 		@if ($errors->has('curr_c_headera'))
 		<span class="invalid-feedback" role="alert">
@@ -40,7 +40,10 @@
 <div class="form-group row {{ $errors->has('c_headera') ? ' has-error' : '' }}">
 	{{ Form::label( 'pri2', 'New Password : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 	<div class="col-6">
-		{{ Form::password('c_headera', ['class' => 'form-control'.($errors->has('c_headera') ? ' is-invalid' : NULL), 'id' => 'pri2', 'placeholder' => 'New Password', 'autofocus']) }}
+		{{ Form::password('c_headera', ['class' => 'form-control'.($errors->has('c_headera') ? ' is-invalid' : NULL), 'id' => 'pri2', 'placeholder' => 'New Password',  'aria-describedby' => 'newpasswordHelpBlock', 'autofocus']) }}
+		<small id="newpasswordHelpBlock" class="form-text text-muted ">
+			If you do not wish to change your password, just leave this New Password input.
+		</small>
 		@if ($errors->has('c_headera'))
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $errors->first('c_headera') }}</strong>
@@ -50,9 +53,12 @@
 </div>
 
 <div class="form-group row {{ $errors->has('c_headera_confirmation') ? ' has-error' : '' }}">
-	{{ Form::label( 'pri2', 'Confirm New Password : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+	{{ Form::label( 'pri3', 'Confirm New Password : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 	<div class="col-6">
-		{{ Form::password('c_headera_confirmation', ['class' => 'form-control'.($errors->has('c_headera_confirmation') ? ' is-invalid' : NULL), 'id' => 'pri2', 'placeholder' => 'Password Confirmation', 'autofocus']) }}
+		{{ Form::password('c_headera_confirmation', ['class' => 'form-control'.($errors->has('c_headera_confirmation') ? ' is-invalid' : NULL), 'id' => 'pri3', 'placeholder' => 'Password Confirmation', 'aria-describedby' => 'confpasswordHelpBlock', 'autofocus']) }}
+		<small id="confpasswordHelpBlock" class="form-text text-muted ">
+			If you do not wish to change your password, just leave this Password Confirmation input.
+		</small>
 		@if ($errors->has('c_headera_confirmation'))
 		<span class="invalid-feedback" role="alert">
 			<strong>{{ $errors->first('c_headera_confirmation') }}</strong>

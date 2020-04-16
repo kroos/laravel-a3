@@ -11,11 +11,11 @@ class HSStoneTable extends Model
 	protected $primaryKey = 'MasterName';
 	public $incrementing = false;
 	protected $keyType = 'string';
-	const CREATED_AT = 'CreateDate';
-	const UPDATED_AT = 'SaveDate';
 	protected $primaryKey = null;
 	public $incrementing = false;
-	public $timestamps = false;
+	// public $timestamps = false;
+	const CREATED_AT = 'CreateDate';
+	const UPDATED_AT = 'SaveDate';
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////

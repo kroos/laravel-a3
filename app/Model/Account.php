@@ -89,7 +89,7 @@ class Account extends Authenticatable implements MustVerifyEmail
 	// has
 	public function hasmanycharac()
 	{
-		return $this->hasMany('App\Model\Charac0', 'c_sheaderb');
+		return $this->hasMany('App\Model\Charac0', 'c_sheadera');
 	}
 
 	public function hasonestorage()

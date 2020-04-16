@@ -3,16 +3,19 @@
 namespace App\Model;
 
 // use Illuminate\Database\Eloquent\Model;
-class ItemStorage0 extends Model
+class Friend0 extends Model
 {
 
 	protected $connection = 'sqlsrv';
-	protected $table = 'ItemStorage0';
-	protected $primaryKey = 'c_id';
+	protected $table = 'FRIEND0';
+	protected $primaryKey = 'CharName';
 	public $incrementing = false;
 	protected $keyType = 'string';
-	const CREATED_AT = 'd_cdate';
-	const UPDATED_AT = 'd_udate';
+	protected $primaryKey = null;
+	public $incrementing = false;
+	public $timestamps = false;
+	// const CREATED_AT = 'CreateDate';
+	// const UPDATED_AT = 'SaveDate';
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,9 +38,9 @@ class ItemStorage0 extends Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
-	public function belongstoaccount()
+	public function belongstocharac()
 	{
-		return $this->belongsTo('App\Model\Account', 'c_id');
+		return $this->belongsTo('App\Model\Charac0', 'CharName');
 	}
 
 }
