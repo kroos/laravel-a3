@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 // load validation
 use App\Http\Requests\ProfileRequest;
-use App\Http\Requests\ChangePasswordRequest;
 
 // load carbon
 use Carbon\Carbon;

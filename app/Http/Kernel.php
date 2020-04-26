@@ -64,8 +64,39 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // middleware for fault creator to edit
+        // middleware for creator to edit
         // 'userChangePasswd' => \App\Http\Middleware\Profile\RedirectIfNotUserPassword::class,
         'isOwner' => \App\Http\Middleware\Profile\RedirectIfNotUserProfile::class,
+        'isGM' => \App\Http\Middleware\Roles\RedirectIfNotUserGM::class,
+        'isGoldM' => \App\Http\Middleware\Roles\RedirectIfNotUserGoldM::class,
+        'isSM' => \App\Http\Middleware\Roles\RedirectIfNotUserSM::class,
+        'isBM' => \App\Http\Middleware\Roles\RedirectIfNotUserBM::class,
+        'isNM' => \App\Http\Middleware\Roles\RedirectIfNotUserNM::class,
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // middleware for forum
+        'ownPost' => \App\Http\Middleware\Forum\RedirectIfNotUserPost::class,
+        'ownComment' => \App\Http\Middleware\Forum\RedirectIfNotUserComment::class,
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // middleware for offline town portal
+        'ownOTP' => \App\Http\Middleware\Normal\RedirectIfNotUserOTP::class,
+        // middleware for acquire super shue
+        'ownASShue' => \App\Http\Middleware\Normal\RedirectIfNotUserASS::class,
+        // middleware for buy all skill
+        'ownBASkill' => \App\Http\Middleware\Normal\RedirectIfNotUserBAS::class,
+        // middleware for equip super super shue
+        'ownESSS' => \App\Http\Middleware\Normal\RedirectIfNotUserESSS::class,
+        // middleware for buy lore
+        'ownBLore' => \App\Http\Middleware\Normal\RedirectIfNotUserBlore::class,
+        // middleware for hero rebirth
+        'ownHRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserHRebirth::class,
+        // middleware for hero reset rebirth
+        'ownHRRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserHRRebirth::class,
+        // middleware for mercenary rebirth
+        'ownMRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserMRebirth::class,
+        // middleware for mercenary reset rebirth
+        'ownMRRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserMRRebirth::class,
+
     ];
 }

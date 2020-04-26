@@ -1,11 +1,17 @@
-<div class="js-cookie-consent cookie-consent">
+<div class="col-12 js-cookie-consent cookie-consent">
 
-    <span class="cookie-consent__message">
-        {!! trans('cookieConsent::texts.message') !!}
-    </span>
+	<div class="card">
+		<div class="card-body">
+			<p class="text-center">
+				<span class="cookie-consent__message">
+					{!! trans('cookieConsent::texts.message') !!}
+				</span>
 
-    <button class="js-cookie-consent-agree cookie-consent__agree">
-        {{ trans('cookieConsent::texts.agree') }}
-    </button>
+				<button class="btn btn-info js-cookie-consent-agree cookie-consent__agree">
+					{{ trans('cookieConsent::texts.agree') }}
+				</button>
+			</p>
+		</div>
+	</div>
 
 </div>

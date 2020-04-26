@@ -18,9 +18,10 @@ Route::get('remote/email', 'API\AccountController@emailusername')->name('remote.
 // welcome controller
 Route::get('/', 'WelcomeController@index')->name('welcome')->middleware('guest');
 
-Route::get('/news', 'Forum\NewsController@index')->name('news')->middleware('guest');
-Route::get('/announcement', 'Forum\AnnouncementController@index')->name('announcement')->middleware('guest');
-Route::get('/download', 'Forum\DownloadController@index')->name('download')->middleware('guest');
+// forum
+Route::resources(['postCategory' => 'Forum\PostCategoryController']);
+Route::resources(['post' => 'Forum\PostController']);
+Route::resources(['postComment' => 'Forum\PostCommentController']);
 
 Route::get('/serverstatus', 'ServerInfoController@serverstatus')->name('serverstatus')->middleware('guest');
 Route::get('/playeronline', 'ServerInfoController@playeronline')->name('playeronline')->middleware('guest');
@@ -35,8 +36,41 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth', '
 // resources : not available for middleware
 Route::resources(['account' => 'Profile\AccountController']);
 
-// news controller
-Route::get('/usernews', 'News\NewsController@index')->name('usernews');
+// offline town portal
+Route::get('offline_town_portal/{offline_town_portal}/edit', 'NormalController@offedit')->name('off.edit');
+Route::patch('offline_town_portal/{offline_town_portal}', 'NormalController@offupdate')->name('off.update');
+
+// acquire super shue
+Route::get('acquire_super_shue/{acquire_super_shue}/edit', 'NormalController@asshueedit')->name('asshue.edit');
+Route::patch('acquire_super_shue/{acquire_super_shue}', 'NormalController@asshueupdate')->name('asshue.update');
+
+// buy all skill
+Route::get('buy_all_skill/{buy_all_skill}/edit', 'NormalController@basedit')->name('bas.edit');
+Route::patch('buy_all_skill/{buy_all_skill}', 'NormalController@basupdate')->name('bas.update');
+
+// equip super super shue
+Route::get('equip_super_super_shue/{equip_super_super_shue}/edit', 'NormalController@essshedit')->name('esssh.edit');
+Route::patch('equip_super_super_shue/{equip_super_super_shue}', 'NormalController@essshupdate')->name('esssh.update');
+
+// buy lore
+Route::get('buy_lore/{buy_lore}/edit', 'NormalController@buyloreedit')->name('buylore.edit');
+Route::patch('buy_lore/{buy_lore}', 'NormalController@buyloreupdate')->name('buylore.update');
+
+// hero rebirth
+Route::get('hero_rebirth/{hero_rebirth}/edit', 'NormalController@herorebirthedit')->name('herorebirth.edit');
+Route::patch('hero_rebirth/{hero_rebirth}', 'NormalController@herorebirthupdate')->name('herorebirth.update');
+
+// hero reset rebirth
+Route::get('hero_reset_rebirth/{hero_reset_rebirth}/edit', 'NormalController@heroresetrebirthedit')->name('heroresetrebirth.edit');
+Route::patch('hero_reset_rebirth/{hero_reset_rebirth}', 'NormalController@heroresetrebirthupdate')->name('heroresetrebirth.update');
+
+// mercenary rebirth
+Route::get('mercenary_rebirth/{mercenary_rebirth}/edit', 'NormalController@mercenaryrebirthedit')->name('mercenaryrebirth.edit');
+Route::patch('mercenary_rebirth/{mercenary_rebirth}', 'NormalController@mercenaryrebirthupdate')->name('mercenaryrebirth.update');
+
+// mercenary rebirth
+Route::get('mercenary_reset_rebirth/{mercenary_reset_rebirth}/edit', 'NormalController@mercenaryresetrebirthedit')->name('mercenaryresetrebirth.edit');
+Route::patch('mercenary_reset_rebirth/{mercenary_reset_rebirth}', 'NormalController@mercenaryresetrebirthupdate')->name('mercenaryresetrebirth.update');
 
 
 

@@ -20,22 +20,25 @@
 	<!-- Styles -->
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-	{!! htmlScriptTagJsApi([
-		'action' => 'homepage',
-		'callback_then' => 'callbackThen',
-		'callback_catch' => 'callbackCatch'
-	]) !!}
+<?php
+
+		// htmlScriptTagJsApi([
+		// 'action' => 'homepage',
+		// 'callback_then' => 'callbackThen',
+		// 'callback_catch' => 'callbackCatch'
+		// ])
+?>
 
 </head>
-<body>
+<body class="d-flex flex-column">
 	<div id="app">
 		@include('layouts.nav')
 
 		<main class="py-4">
 			<div class="container-fluid">
 				<div class="row justify-content-center">
-					{{-- <div class="col-md-12 animated flipInY delay-5s"> --}}
-					<div class="col-md-12">
+					{{-- <div class="col-12 animated flipInY delay-5s"> --}}
+					<div class="col-12">
 
 						@yield('content')
 
@@ -44,7 +47,33 @@
 			</div>
 		</main>
 	</div>
+	<footer class="mt-auto  py-4 bg-dark text-white-50  sticky-top ">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-4">
+					<div><img src="{{ asset('images/logo-149x103.png') }}" class="img-fluid rounded" width="10%" alt="logo">
+						<span class="font-weight-bold">{{ config('app.name') }} - All Rights Reserved</span> <br>
+						<span>&copy; Copyright {{ \Carbon\Carbon::now()->format('Y') }}</span>
+					</div>
+				</div>
+				<div class="col-4">
+					<p class="text-center">Author : <a href="http://forum.ragezone.com/members/294574.html" target="_blank">Zaugola</a></p>
+				</div>
 
+				<div class="col-4">
+					<span class="font-weight-bold">Sign up for Updates!</span>
+					<form action="#" method="post">
+						<div class="form-control bg-light">
+							<label><small class="font-weight-bold">E-Mail:
+								<input type="text" name="eMail" id="eMail" autocomplete="email" placeholder="Enter you E-Mail!" pattern="" required>
+							</small></label>
+							<input class="btn btn-primary btn-sm" type="submit" name="submit" id="submit" value="Subscribe">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</footer>
 	@include('cookieConsent::index')
 
 	<!-- Scripts -->

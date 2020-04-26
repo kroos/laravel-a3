@@ -180,6 +180,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        App\Providers\Helper\HelperServiceProvider::class,
     ],
 
     /*
@@ -232,6 +234,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        'Hero' => App\Helpers\Hero::class,
     ],
 
 ];

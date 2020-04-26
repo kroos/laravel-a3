@@ -35,7 +35,7 @@
 // mdi font
 @import '~@mdi/font/scss/materialdesignicons.scss';
 
-body {
+body{
 	background-color: #17a2b8;
 	// background-color: #0B8165;
 	// background: url(images/background.jpg);
@@ -68,9 +68,13 @@ h1, h2, h3, h4, h5, h6 {
 .card {
 	border: $card-border-width solid $gray-500;
 }
+
 .card-header {
 	// background-color: $gray-400;
 	background-color: $gray-500;
 	// background-color: #9eff98;
 	// background-color: #f56686;
 }
+
+
+

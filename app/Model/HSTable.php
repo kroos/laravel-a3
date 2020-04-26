@@ -20,10 +20,10 @@ class HSTable extends Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// public function hasoneaccount()
-	// {
-	// 	return $this->hasOne('App\Model\Account', 'c_sheaderb');
-	// }
+	public function hasonehs()
+	{
+		return $this->hasOne('App\Model\HS', 'HSID');
+	}
 
 
 

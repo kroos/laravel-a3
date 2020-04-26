@@ -38,9 +38,9 @@ class HS extends Model
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // belongto
-	public function belongstocharac()
+	public function belongstohstable()
 	{
-		return $this->belongsTo('App\Model\Charac0', 'MasterName');
+		return $this->belongsTo('App\Model\HS', 'HSID');
 	}
 
 }

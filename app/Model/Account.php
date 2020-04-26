@@ -130,24 +130,6 @@ class Account extends Authenticatable implements MustVerifyEmail
 
 //////////////////////////////////////////////////////////////////////////////////
 	// acl
-
-	// public function isGM( $id ) {
-	// 	if ( \Auth::user()->c_sheaderc == $id ) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-
-	// public function isVIP( $id )
-	// {
-	// 	if ( \Auth::user()->c_sheaderc == $id ) {
-	// 		return true;
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-
 	public function onlyProfileOwner($id)
 	{
 		if (\Auth::user()->c_id == $id) {
@@ -156,6 +138,80 @@ class Account extends Authenticatable implements MustVerifyEmail
 			return false;
 		}
 	}
+
+	public function onlyGM($role)
+	{
+		if (\Auth::user()->belongsToRoles->id == $role){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function onlyGoldM($role)
+	{
+		if (\Auth::user()->belongsToRoles->id == $role){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function onlySM($role)
+	{
+		if (\Auth::user()->belongsToRoles->id == $role){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function onlyBM($role)
+	{
+		if (\Auth::user()->belongsToRoles->id == $role){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function onlyNM($role)
+	{
+		if (\Auth::user()->belongsToRoles->id == $role){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function postOwner($id)
+	{
+		foreach (\Auth::user()->hasmanypost()->get() as $key) {
+			if( $key->author == $id ) {
+				return true;
+			} else {
+				if (\Auth::user()->c_sheaderb == 1) {
+					return true;
+				}
+			}
+		}
+	}
+
+	public function commentOwner($id)
+	{
+		foreach (\Auth::user()->hasmanycomment()->get() as $key) {
+			if( $key->author == $id ) {
+				return true;
+			} else {
+				if (\Auth::user()->c_sheaderb == 1) {
+					return true;
+				}
+			}
+		}
+	}
+
+
+
 
 
 

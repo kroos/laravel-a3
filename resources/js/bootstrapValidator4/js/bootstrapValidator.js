@@ -530,7 +530,7 @@ if (typeof jQuery === 'undefined') {
             cssClasses = cssClasses.split(' ');
             var n = cssClasses.length;
             for (var i = 0; i < n; i++) {
-                if (/^col-(xs|sm|md|lg)-\d+$/.test(cssClasses[i]) || /^col-(xs|sm|md|lg)-offset-\d+$/.test(cssClasses[i])) {
+                if ( /^col-(xs|sm|md|lg)-\d+$/.test(cssClasses[i]) || /^col-(xs|sm|md|lg)-offset-\d+$/.test(cssClasses[i]) || /^col-\d+$/.test(cssClasses[i]) || /^col-offset-\d+$/.test(cssClasses[i]) || /^offset-\d+$/.test(cssClasses[i]) || /^offset-(xs|sm|md|lg)-\d+$/.test(cssClasses[i]) || /^col+$/.test(cssClasses[i]) || /^col-auto+$/.test(cssClasses[i]) ) {
                     return $parent;
                 }
             }
