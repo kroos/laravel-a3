@@ -2,15 +2,6 @@
 
 return [
 ##################################################################################################
-//PAID MEMBERSHIP AND SALARY.
-//give the name of your choice for the following paid membership type.
-
-	1 => env('A3_GM', 1500000000),
-	2 => env('A3_GOLDM', 1500000000),
-	3 => env('A3_SM', 1000000000),
-	4 => env('A3_BM', 500000000),
-
-##################################################################################################
 //GAMESERVER PORT.
 //this is your server IP, mostly you don't need to change this IP if your webhosting is the same with your gameserver
 	'srvip' => env('A3_SERVER_IP', '127.0.0.1'),
@@ -93,6 +84,15 @@ return [
 
 //wz needed for merc reset level
 	'mercwzreset' => env('A3_MERCENARY_RESET_REBIRTH_WZ', 2000000000),
+##################################################################################################
+//PAID MEMBERSHIP AND SALARY.
+//give the name of your choice for the following paid membership type.
+
+	1 => env('A3_GM', 1500000000),
+	2 => env('A3_GOLDM', 1500000000),
+	3 => env('A3_SM', 1000000000),
+	4 => env('A3_BM', 500000000),
+
 ##################################################################################################
 // heroes type
 	'hero0' => 'Warrior',

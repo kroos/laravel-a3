@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 // load helper
 use App\Helpers\Hero;
+use App\Helpers\Mercenary;
 
 // load validation
 use App\Http\Requests\OfflineTownPortalRequest;
 use App\Http\Requests\AcquireSuperShueRequest;
 use App\Http\Requests\BuyLoreRequest;
+use App\Http\Requests\HeroStatRequest;
+use App\Http\Requests\MercenaryStatRequest;
 use App\Http\Requests\MercenaryRebirthRequest;
 
 // load carbon
@@ -41,6 +44,8 @@ class NormalController extends Controller
 		$this->middleware('ownHRRebirth')->only(['heroresetrebirthedit', 'heroresetrebirthupdate']);
 		$this->middleware('ownMRebirth')->only(['mercenaryrebirthedit', 'mercenaryrebirthupdate']);
 		$this->middleware('ownMRRebirth')->only(['mercenaryresetrebirthedit', 'mercenaryresetrebirthupdate']);
+		$this->middleware('ownHPoints')->only(['heropointsedit', 'heropointsupdate']);
+		$this->middleware('ownMPoints')->only(['mercenarypointsedit', 'mercenarypointsupdate']);
 	}
 
 	public function offedit(Account $offline_town_portal)
@@ -675,7 +680,107 @@ class NormalController extends Controller
 		return redirect(route('mercenaryresetrebirth.edit', \Auth::user()->c_id));
 	}
 
+	public function heropointsedit(Account $hero_points)
+	{
+		return view('normal.heropoints', compact(['hero_points']));
+	}
 
+	public function heropointsupdate(HeroStatRequest $request, Account $hero_points)
+	{
+		// set_cheadera($str, $int, $dex, $vit, $mana, $points, $cid3)
+		// dd( $request->all(), Hero::set_cheadera( $request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->c_id ) );
 
+		$hero = $hero_points->hasmanycharac()->where('c_id', $request->c_id);
+
+		foreach ($hero->get() as $key) {
+			$type = $key->c_sheaderb;
+			$str = Hero::get_cheadera('STR', $key->c_id);
+			$int = Hero::get_cheadera('INT', $key->c_id);
+			$dex = Hero::get_cheadera('DEX', $key->c_id);
+			$vit = Hero::get_cheadera('VIT', $key->c_id);
+			$mana = Hero::get_cheadera('MANA', $key->c_id);
+			$points = Hero::get_cheadera('POINTS', $key->c_id);
+		}
+
+		if($request->str < $str) {
+			$msg = 'Your '.$request->c_id.' strength is '.$request->str.'. It cant be lower than '.$str;
+		} elseif ($request->int < $int) {
+			$msg = 'Your '.$request->c_id.' intelligence is '.$request->int.'. It cant be lower than '.$int;
+		} elseif ($request->dex < $dex) {
+			$msg = 'Your '.$request->c_id.' dexterity is '.$request->dex.'. It cant be lower than '.$dex;
+		} elseif ($request->vit < $vit) {
+			$msg = 'Your '.$request->c_id.' vitality is '.$request->vit.'. It cant be lower than '.$vit;
+		} elseif ($request->mana < $mana) {
+			$msg = 'Your '.$request->c_id.' mana is '.$request->mana.'. It cant be lower than '.$mana;
+		} elseif ($request->points > $points) {
+			$msg = 'Your '.$request->c_id.' remaining points is '.$request->points.'. It cant be higher than '.$points;
+		} elseif ($request->points < 0) {
+			$msg = 'Your '.$request->c_id.' remaining points is '.$request->points.'. It cant be higher than 0';
+		} elseif ($request->str < 0 || $request->int < 0 || $request->dex < 0 || $request->vit < 0 || $request->mana < 0) {
+			$msg = 'Please check your attributes,one of it is below than 0.';
+		} else {
+			$hero->update([
+				'c_headera' => Hero::set_cheadera( $request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->c_id ),
+			]);
+			$msg = 'Success update your '.$request->c_id;
+		}
+
+		Session::flash('flash_message', $msg);
+		return redirect(route('heropoints.edit', \Auth::user()->c_id));
+	}
+
+	public function mercenarypointsedit(Account $mercenary_points)
+	{
+		return view('normal.mercenarypoints', compact(['mercenary_points']));
+	}
+
+	public function mercenarypointsupdate(MercenaryStatRequest $request, Account $mercenary_points)
+	{
+		// dd($request->all());
+
+		$merc = $mercenary_points->hasmanycharac()->where('c_id', $request->c_id);
+
+		foreach ($merc->get() as $key) {
+			foreach ($key->hasmanyhstable()->where('HSID', $request->HSID)->whereNull('DelDate')->get() as $value) {
+				
+				$type = $value->Type;
+				$str = Mercenary::get_ability('STR', $value->HSID);
+				$int = Mercenary::get_ability('INT', $value->HSID);
+				$dex = Mercenary::get_ability('DEX', $value->HSID);
+				$vit = Mercenary::get_ability('VIT', $value->HSID);
+				$mana = Mercenary::get_ability('MANA', $value->HSID);
+				$points = Mercenary::get_ability('POINTS', $value->HSID);
+			}
+		}
+
+		// dd($request->str, $str, Mercenary::set_ability($request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->HSID));
+
+		if($request->str < $str) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' strength is '.$request->str.'. It cant be lower than '.$str;
+		} elseif ($request->int < $int) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' intelligence is '.$request->int.'. It cant be lower than '.$int;
+		} elseif ($request->dex < $dex) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' dexterity is '.$request->dex.'. It cant be lower than '.$dex;
+		} elseif ($request->vit < $vit) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' vitality is '.$request->vit.'. It cant be lower than '.$vit;
+		} elseif ($request->mana < $mana) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' mana is '.$request->mana.'. It cant be lower than '.$mana;
+		} elseif ($request->points > $points) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' remaining points is '.$request->points.'. It cant be higher than '.$points;
+		} elseif ($request->points < 0) {
+			$msg = 'Your '.HSTable::where('HSID', $request->HSID)->first()->HSName.' remaining points is '.$request->points.'. It cant be higher than 0';
+		} elseif ($request->str < 0 || $request->int < 0 || $request->dex < 0 || $request->vit < 0 || $request->mana < 0) {
+			$msg = 'Please check your attributes,one of it is below than 0.';
+		} else {
+			foreach ($merc as $key) {
+				$key->hasmanyhstable()->where('HSID', $request->HSID)->whereNull('DelDate')->update([
+					'Ability' => Mercenary::set_ability($request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->HSID),
+				]);
+			}
+			$msg = 'Data successfully update!';
+		}
+		Session::flash('flash_message', $msg);
+		return redirect(route('mercenarypoints.edit', \Auth::user()->c_id));
+	}
 }
 

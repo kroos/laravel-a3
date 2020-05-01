@@ -39,7 +39,7 @@
 			{{ \Carbon\Carbon::parse(Auth::user()->salary)->toDayDateTimeString() }}
 		</div>
 		<div class="col-4 text-right">
-			Last Salary Taken On :
+			Date Last Salary :
 		</div>
 		<div class="col-8">
 			{{ \Carbon\Carbon::parse(Auth::user()->last_salary)->toDayDateTimeString() }}

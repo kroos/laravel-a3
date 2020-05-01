@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// API AJAX Controller
-Route::get('remote/email', 'API\AccountController@emailusername')->name('remote.emailusername');
-
 // welcome controller
 Route::get('/', 'WelcomeController@index')->name('welcome')->middleware('guest');
 
@@ -68,9 +65,33 @@ Route::patch('hero_reset_rebirth/{hero_reset_rebirth}', 'NormalController@herore
 Route::get('mercenary_rebirth/{mercenary_rebirth}/edit', 'NormalController@mercenaryrebirthedit')->name('mercenaryrebirth.edit');
 Route::patch('mercenary_rebirth/{mercenary_rebirth}', 'NormalController@mercenaryrebirthupdate')->name('mercenaryrebirth.update');
 
-// mercenary rebirth
+// mercenary reset rebirth
 Route::get('mercenary_reset_rebirth/{mercenary_reset_rebirth}/edit', 'NormalController@mercenaryresetrebirthedit')->name('mercenaryresetrebirth.edit');
 Route::patch('mercenary_reset_rebirth/{mercenary_reset_rebirth}', 'NormalController@mercenaryresetrebirthupdate')->name('mercenaryresetrebirth.update');
+
+// hero points editing
+Route::get('hero_points/{hero_points}/edit', 'NormalController@heropointsedit')->name('heropoints.edit');
+Route::patch('hero_points/{hero_points}', 'NormalController@heropointsupdate')->name('heropoints.update');
+
+// mercenary points editing
+Route::get('mercenary_points/{mercenary_points}/edit', 'NormalController@mercenarypointsedit')->name('mercenarypoints.edit');
+Route::patch('mercenary_points/{mercenary_points}', 'NormalController@mercenarypointsupdate')->name('mercenarypoints.update');
+
+// salary
+Route::get('salary/{salary}/edit', 'VipController@salaryedit')->name('salary.edit');
+Route::patch('salary/{salary}', 'VipController@salaryupdate')->name('salary.update');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

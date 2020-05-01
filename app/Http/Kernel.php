@@ -97,6 +97,13 @@ class Kernel extends HttpKernel
         'ownMRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserMRebirth::class,
         // middleware for mercenary reset rebirth
         'ownMRRebirth' => \App\Http\Middleware\Normal\RedirectIfNotUserMRRebirth::class,
+        // middleware for hero edit points
+        'ownHPoints' => \App\Http\Middleware\Normal\RedirectIfNotUserHPoints::class,
+        // middleware for mercenary edit points
+        'ownMPoints' => \App\Http\Middleware\Normal\RedirectIfNotUserMPoints::class,
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // vip salary
+        'ownSalary' => \App\Http\Middleware\Vip\RedirectIfNotUserSalary::class,
     ];
 }

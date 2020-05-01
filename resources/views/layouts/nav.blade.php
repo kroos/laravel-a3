@@ -100,7 +100,7 @@ use Carbon\CarbonPeriod;
 					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>VIP Member <i class="fas fa-user-tie"></i></a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('account.index') }}">Salary <i class="fas fa-hand-holding-usd"></i></a>
+						<a class="dropdown-item" href="{{ route('salary.edit', \Auth::user()->c_id) }}">Salary <i class="fas fa-hand-holding-usd"></i></a>
 					</div>
 				</li>
 
@@ -153,8 +153,8 @@ use Carbon\CarbonPeriod;
 						<a class="dropdown-item" href="{{ route('heroresetrebirth.edit', \Auth::user()->c_id) }}">Hero Reset Rebirth <i class="fas fa-praying-hands"></i></a>
 						<a class="dropdown-item" href="{{ route('mercenaryrebirth.edit', \Auth::user()->c_id) }}">Mercenary Rebirth <i class="fas fa-pray"></i></a>
 						<a class="dropdown-item" href="{{ route('mercenaryresetrebirth.edit', \Auth::user()->c_id) }}">Mercenary Reset Rebirth <i class="fas fa-pray"></i></a>
-						<a class="dropdown-item" href="{{ route('esssh.edit', \Auth::user()->c_id) }}">Adding Hero Stat Points <i class="fas fa-dumbbell"></i></a>
-						<a class="dropdown-item" href="{{ route('esssh.edit', \Auth::user()->c_id) }}">Adding Mercenary Stat Points <i class="fas fa-dumbbell"></i></a>
+						<a class="dropdown-item" href="{{ route('heropoints.edit', \Auth::user()->c_id) }}">Adding Hero Stat Points <i class="fas fa-dumbbell"></i></a>
+						<a class="dropdown-item" href="{{ route('mercenarypoints.edit', \Auth::user()->c_id) }}">Adding Mercenary Stat Points <i class="fas fa-dumbbell"></i></a>
 					</div>
 				</li>
 

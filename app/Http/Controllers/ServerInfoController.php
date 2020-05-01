@@ -25,7 +25,7 @@ class ServerInfoController extends Controller
 
 	public function playeronline()
 	{
-		$time = DB::select("select DATEADD(minute, ".config('a3.minutesago').", GETDATE()) AS hourago");
+		$time = DB::select("SELECT DATEADD(minute, ".config('a3.minutesago').", GETDATE()) AS hourago");
 		// dd($time);
 		$query = DB::table('Charac0')
 				->where('c_status', 'A')

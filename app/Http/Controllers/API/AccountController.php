@@ -9,9 +9,9 @@ use App\Model\Account;
 
 class AccountController extends Controller
 {
-    function __construct()
+    public function __construct()
     {
-
+        $this->middleware('guest');
     }
 
     // checking on duplicate email and username
