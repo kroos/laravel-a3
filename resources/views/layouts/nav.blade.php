@@ -58,12 +58,12 @@ use Carbon\CarbonPeriod;
 					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Game Master Editing Account <i class="far fa-user-circle"></i></a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('account.index') }}">Account Info <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Changing Account Type <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Paid Membership <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">List of Paid Membership <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Ban Account <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Unban Account <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('infoaccount.index') }}">Account Info <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('convertgm.edit') }}">Changing Account Type <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('convertpaidmembership.create') }}">Paid Membership <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('listpm.index') }}">List of Paid Membership <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('banaccount.create') }}">Ban Account <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('unbanaccount.index') }}">Unban Account <i class="fas fa-user-circle"></i></a>
 					</div>
 				</li>
 

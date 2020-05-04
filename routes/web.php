@@ -33,6 +33,8 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware(['auth', '
 // resources : not available for middleware
 Route::resources(['account' => 'Profile\AccountController']);
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// user
 // offline town portal
 Route::get('offline_town_portal/{offline_town_portal}/edit', 'NormalController@offedit')->name('off.edit');
 Route::patch('offline_town_portal/{offline_town_portal}', 'NormalController@offupdate')->name('off.update');
@@ -77,18 +79,33 @@ Route::patch('hero_points/{hero_points}', 'NormalController@heropointsupdate')->
 Route::get('mercenary_points/{mercenary_points}/edit', 'NormalController@mercenarypointsedit')->name('mercenarypoints.edit');
 Route::patch('mercenary_points/{mercenary_points}', 'NormalController@mercenarypointsupdate')->name('mercenarypoints.update');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// vip
 // salary
 Route::get('salary/{salary}/edit', 'VipController@salaryedit')->name('salary.edit');
 Route::patch('salary/{salary}', 'VipController@salaryupdate')->name('salary.update');
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// gm
+// info account
+Route::get('info_account', 'GMController@infoaccount')->name('infoaccount.index');
 
+// convert to gm
+Route::get('convert_gm', 'GMController@convertgm')->name('convertgm.edit');
 
+// convert to paid membership
+Route::get('convert_paid_membership', 'GMController@cpmcreate')->name('convertpaidmembership.create');
+Route::post('convert_paid_membership', 'GMController@cpmstore')->name('convertpaidmembership.store');
 
+// convert to paid membership
+Route::get('list_paid_membership', 'GMController@listpm')->name('listpm.index');
 
+// convert to paid membership
+Route::get('ban_account', 'GMController@bancreate')->name('banaccount.create');
+Route::post('ban_account', 'GMController@banstore')->name('banaccount.store');
 
-
-
-
+// unban account
+Route::get('unban_account', 'GMController@unbanaccount')->name('unbanaccount.index');
 
 
 

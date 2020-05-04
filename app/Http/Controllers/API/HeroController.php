@@ -5,6 +5,9 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+// load validation for convergmupdate
+use App\Http\Requests\ConvertGMRequest;
+
 // load model
 use App\Model\Charac0;
 
@@ -18,43 +21,8 @@ class HeroController extends Controller
 		// $this->middleware(['auth', 'verified']);
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-	    //
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-	    //
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
 	public function show(Charac0 $charac0)
 	{
-		// $charac0->c_sheaderb;
-		// Hero::get_cheadera('STR', $charac0->c_id);
-		// Hero::get_cheadera('INT', $charac0->c_id);
-		// Hero::get_cheadera('DEX', $charac0->c_id);
-		// Hero::get_cheadera('VIT', $charac0->c_id);
-		// Hero::get_cheadera('MANA', $charac0->c_id);
-		// Hero::get_cheadera('POINTS', $charac0->c_id);
-
 		return [
 			'type' => $charac0->c_sheaderb,
 			'str' => Hero::get_cheadera('STR', $charac0->c_id),
@@ -66,26 +34,24 @@ class HeroController extends Controller
 		];
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, Charac0 $charac0)
+	public function list(Request $request)
 	{
-	    //
+		foreach (Charac0::where('c_status', 'A')->where('c_id', 'like', '%'.$request->term.'%')->get() as $k) {
+			$data[] = $k->c_id;
+		}
+		return $data;
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(Charac0 $charac0)
+	public function convertgmupdate(ConvertGMRequest $request)
 	{
-	    //
+		// dd($request->except('_token'));
+		Charac0::find($request->c_id)->belongstoaccount()->update($request->only('c_sheaderb'));
+		return [
+			'message' => 'Success convert account.'
+		];
 	}
+
+
+
+
 }
