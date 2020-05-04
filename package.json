@@ -36,7 +36,7 @@
         "fullcalendar": "^3.10.1",
         "imagemin": "^7.0.1",
         "jarallax": "^1.12.0",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "jquery-chained": "1.0.1",
         "jquery-touchswipe": "^1.6.19",
         "jquery-ui": "^1.12.1",
