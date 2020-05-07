@@ -24,7 +24,7 @@
 														<th>Wz</th>
 														<th>Char Status</th>
 														<th>Rebirth</th>
-														<th>Rebirth Times</th>
+														<th>Rank</th>
 													</tr>
 												</thead>
 											</table>

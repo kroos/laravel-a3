@@ -49,7 +49,7 @@ class AccountController extends Controller
 						"wz" => $k->c_headerc,						// {"data": "wz"},
 						"hstatus" => $k->c_status,					// {"data": "hstatus"},
 						"rebirth" => $k->rb,						// {"data": "rebirth"},
-						"rebirth_times" => $k->times_rb,			// {"data": "rebirth_times"},
+						"rebirth_times" => config('a3.rank'.$k->times_rb),			// {"data": "rebirth_times"},
 					];
 			}
 		}

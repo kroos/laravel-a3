@@ -3,42 +3,27 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h1>Edit Mercenary Points<h1>
+		<h1>Edit Hero Points<h1>
 	</div>
 	<div class="card-body">
 	@include('layouts.info')
 	@include('layouts.errorform')
 
-	{!! Form::model($mercenary_points, ['route' => ['mercenarypoints.update', $mercenary_points->c_id], 'method' => 'PATCH', 'id' => 'form', 'files' => true]) !!}
+	{!! Form::open(['route' => 'heroeditpoints.store', 'id' => 'form', 'files' => true]) !!}
 
 	<h6>Please click on your hero below which you want to add your stat points</h6>
 	<h6>Please make sure that all the values will not exceed 65530</h6>
 
-		@if($mercenary_points->hasmanycharac()->where('c_status', 'A')->count() > 0)
-
 			<div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
-				<label for="hero" class="col-4 col-form-label pt-0 text-right">Hero :</label>
-				<div class="col-4">
-					<select name="c_id" class="form-control {{ $errors->has('c_id') ? 'is-invalid' : NULL }}" id="hero">
-						<option value="">Please Choose</option>
-						@foreach($mercenary_points->hasmanycharac()->where('c_status', 'A')->get() as $char)
-						<option value="{{ $char->c_id }}">{{ $char->c_id }}</option>
-						@endforeach
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group row {{ $errors->has('HSID') ? ' has-error' : '' }}">
-				<label for="merc" class="col-4 col-form-label pt-0 text-right">Mercenary :</label>
-				<div class="col-4">
-					<select name="HSID" class="form-control {{ $errors->has('HSID') ? 'is-invalid' : NULL }}" id="merc">
-						<option value="">Please Choose</option>
-						@foreach($mercenary_points->hasmanycharac()->where('c_status', 'A')->get() as $char)
-							@foreach($char->hasmanyhstable()->where('HSState', 1)->whereNull('DelDate')->get() as $merc)
-								<option value="{{ $merc->HSID }}" class="{{ $merc->MasterName }}">{{ $merc->HSName }}</option>
-							@endforeach
-						@endforeach
-					</select>
+				{{ Form::label( 'email', 'Hero : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+				<div class="col-6">
+					{{ Form::text('c_id', @$value, ['class' => 'form-control'.($errors->has('c_id') ? ' is-invalid' : NULL), 'id' => 'email', 'placeholder' => 'Hero']) }}
+					<span id="type"></span>
+					@if ($errors->has('c_id'))
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('c_id') }}</strong>
+					</span>
+					@endif
 				</div>
 			</div>
 
@@ -117,7 +102,7 @@
 			<div class="form-group row {{ $errors->has('mana') ? ' has-error' : '' }}">
 				{{ Form::label( 'mana1', 'Mana : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 				<div class="col-2">
-					<input type="number" name="mana" value="{{ old('mana') }}" class="form-control{{ $errors->has('mana') ? ' is-invalid' : NULL }}" id="mana1" placeholder="Mana" readOnly>
+					<input type="number" name="mana" value="{{ old('mana') }}" class="form-control{{ $errors->has('mana') ? ' is-invalid' : NULL }}" id="mana1" placeholder="Mana">
 					@if ($errors->has('mana'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('mana') }}</strong>
@@ -135,7 +120,7 @@
 			<div class="form-group row {{ $errors->has('points') ? ' has-error' : '' }}">
 				{{ Form::label( 'points1', 'Point Remaining : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 				<div class="col-2">
-					<input type="number" name="points" value="{{ old('points') }}" class="form-control  {{ $errors->has('points') ? ' is-invalid' : NULL }}" id="points1" placeholder="Point Remaining" readonly>
+					<input type="number" name="points" value="{{ old('points') }}" class="form-control  {{ $errors->has('points') ? ' is-invalid' : NULL }}" id="points1" placeholder="Point Remaining" >
 					@if ($errors->has('points'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('points') }}</strong>
@@ -155,9 +140,6 @@
 					{!! Form::button('Submit', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 				</div>
 			</div>
-		@else
-		<p>Please create a character.</p>
-		@endif
 
 	{{ Form::close() }}
 
@@ -167,85 +149,96 @@
 
 @section('js')
 ////////////////////////////////////////////////////////////////////////////////////
-// select 2
-$('#hero, #merc').select2({
-	placeholder: 'Please choose',
-	allowClear: true,
-	closeOnSelect: true,
-	width: '100%',
-});
+// jquery autocomplete
+$( "#email" ).autocomplete({
+	// minLength: 2,
+	source: function (request, response){
+		$.ajax({
+			type: "POST",
+			url:'{{ route('list.index') }}?term=' + request.term,
+			data: {
+					request,
+				},
+			success: response,
+			// dataType: 'json'
+		});
+	},
+	focus: function( event, ui ) {
+		$( "#email" ).val( ui.item.value );
+		return false;
+	},
+	select: function( select, ui ) {
+		// $selection = $(this);
+		$selection = ui.item.value;
+		// console.log(ui.item.value);
+		console.log($selection);
 
-////////////////////////////////////////////////////////////////////////////////////
-// select chained
-$("#merc").chainedTo("#hero");
+		// ajax for finding hero type
+		var data1 = $.ajax({
+			url: "/api/charac0/" + $selection,
+			type: "POST",
+			data: {_token: '{!! csrf_token() !!}'},
+			dataType: 'json',
+			global: false,
+			async:false,
+			success: function (response) {
+				// you will get response from your php page (what you echo or print)
+				return response;
+			},
+			// error: function(jqXHR, textStatus, errorThrown) {
+			error: function(textStatus, errorThrown) {
+				// console.log(jqXHR, textStatus, errorThrown);
+				// console.log(textStatus, errorThrown);
+			}
+		}).responseText;
 
-////////////////////////////////////////////////////////////////////////////////////
-// ajax
-$('#merc').on('change', function() {
-	// $selection = $(this).find(':selected');
-	$selection = $(this).find(':selected');
-	// console.log($selection.val());
+		// convert data1 into json
+		var obj = $.parseJSON( data1 );
 
-	// ajax for finding hero type
-	var data1 = $.ajax({
-		url: "/api/hstable/" + $selection.val(),
-		type: "POST",
-		data: {_token: '{!! csrf_token() !!}'},
-		dataType: 'json',
-		global: false,
-		async:false,
-		success: function (response) {
-			// you will get response from your php page (what you echo or print)
-			return response;
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log(textStatus, errorThrown);
+		if(obj.type == 2) {																				// this is a mage hero
+			$('form input[name="str"]').prop("readonly", true);
+			$('form input[name="int"]').prop("readonly", false);
+
+			// bootstrap validator
+			$('#form').bootstrapValidator( 'addField', $('.int').find('form input[name="int"]') );
+			$('#form').bootstrapValidator( 'removeField', $('.str').find('form input[name="str"]') );
+		} else {																						// this is a warrior, holy knight, archer hero
+			$('form input[name="str"]').prop("readonly", false);
+			$('form input[name="int"]').prop("readonly", true);
+
+			// bootstrap validator
+			$('#form').bootstrapValidator( 'addField', $('.str').find('form input[name="str"]') );
+			$('#form').bootstrapValidator( 'removeField', $('.int').find('form input[name="int"]') );
 		}
-	}).responseText;
+			// setting up the value for attributes
+			$('#str1').val(obj.str).attr({"min" : 0});
+			$('#int1').val(obj.int).attr({"min" : 0});
+			$('#dex1').val(obj.dex).attr({"min" : 0});
+			$('#vit1').val(obj.vit).attr({"min" : 0});
+			$('#mana1').val(obj.mana).attr({"min" : 0});
+			$('#points1').val(obj.points).attr({"min" : 0});
 
-	// convert data1 into json
-	var obj = $.parseJSON( data1 );
+			$("#str2").text(obj.str);
+			$("#int2").text(obj.int);
+			$("#dex2").text(obj.dex);
+			$("#vit2").text(obj.vit);
+			$("#mana2").text(obj.mana);
+			$("#points2").text(obj.points);
 
-	if(obj.type == 2) {																				// this is a mage hero
-		$('form input[name="str"]').prop("readonly", true);
-		$('form input[name="int"]').prop("readonly", false);
+			$("#str3").text(0);
+			$("#int3").text(0);
+			$("#dex3").text(0);
+			$("#vit3").text(0);
+			$("#mana3").text(0);
+			$("#points3").text(0);
 
-		// bootstrap validator
-		$('#form').bootstrapValidator( 'addField', $('.int').find('form input[name="int"]') );
-		$('#form').bootstrapValidator( 'removeField', $('.str').find('form input[name="str"]') );
-	} else {																						// this is a warrior, holy knight, archer hero
-		$('form input[name="str"]').prop("readonly", false);
-		$('form input[name="int"]').prop("readonly", true);
-
-		// bootstrap validator
-		$('#form').bootstrapValidator( 'addField', $('.str').find('form input[name="str"]') );
-		$('#form').bootstrapValidator( 'removeField', $('.int').find('form input[name="int"]') );
+			// $("#str2").css({"color": "red", "border": "2px solid red"});
 	}
-
-		// setting up the value for attributes
-		$('#str1').val(obj.str).attr({"min" : obj.str});
-		$('#int1').val(obj.int).attr({"min" : obj.int});
-		$('#dex1').val(obj.dex).attr({"min" : obj.dex});
-		$('#vit1').val(obj.vit).attr({"min" : obj.vit});
-		$('#mana1').val(obj.mana).attr({"min" : obj.mana});
-		$('#points1').val(obj.points);
-
-		$("#str2").text(obj.str);
-		$("#int2").text(obj.int);
-		$("#dex2").text(obj.dex);
-		$("#vit2").text(obj.vit);
-		$("#mana2").text(obj.mana);
-		$("#points2").text(obj.points);
-
-		$("#str3").text(0);
-		$("#int3").text(0);
-		$("#dex3").text(0);
-		$("#vit3").text(0);
-		$("#mana3").text(0);
-		$("#points3").text(0);
-
-		// $("#str2").css({"color": "red", "border": "2px solid red"});
 });
+
+// $( "#email" ).on( "autocompletechange", function( event, ui ) {
+// 	console.log( $(this).val() );
+// });
 
 ////////////////////////////////////////////////////////////////////////////////////
 // start counting, start with str
@@ -259,7 +252,7 @@ $(document).on('change', '#str1', function () {
 
 	// .css({"color": "red", "border": "2px solid red"});
 
-	//update total points been used
+	// update total points been used
 	update_totalpoints();
 });
 
@@ -273,7 +266,7 @@ $(document).on('change', '#int1', function () {
 
 	// .css({"color": "red", "border": "2px solid red"});
 
-	//update total points been used
+	// update total points been used
 	update_totalpoints();
 });
 
@@ -287,7 +280,7 @@ $(document).on('change', '#dex1', function () {
 
 	// .css({"color": "red", "border": "2px solid red"});
 
-	//update total points been used
+	// update total points been used
 	update_totalpoints();
 });
 
@@ -301,7 +294,7 @@ $(document).on('change', '#vit1', function () {
 
 	// .css({"color": "red", "border": "2px solid red"});
 
-	//update total points been used
+	// update total points been used
 	update_totalpoints();
 });
 
@@ -315,7 +308,21 @@ $(document).on('change', '#mana1', function () {
 
 	// .css({"color": "red", "border": "2px solid red"});
 
-	//update total points been used
+	// update total points been used
+	update_totalpoints();
+});
+
+$(document).on('change', '#points1', function () {
+
+	var points1 = $('#points1');
+	var points2 = $('#points2');
+
+	var cpoints = (points1.val() * 100/100) - (points2.text() * 100/100);
+	$('#points3').text(cpoints);
+
+	// .css({"color": "red", "border": "2px solid red"});
+
+	// update total points been used
 	update_totalpoints();
 });
 
@@ -336,7 +343,8 @@ function update_totalpoints() {
 		// console.log(psum);
 	}
 	$('#points3').text( psum );
-	$('#points1').val( ($('#points2').text()) - ($('#points3').text()) );
+	// $('#points1').val( ($('#points2').text()) - ($('#points3').text()) );
+	// $('#points1').val( $('#points3').text() );
 
 	// revalidate all the inputs
 	$('#form').bootstrapValidator('revalidateField', 'str');
@@ -357,13 +365,6 @@ function update_totalpoints() {
 		},
 		fields: {
 			c_id: {
-				validators: {
-					notEmpty: {
-						message: 'This cannot be empty!'
-					},
-				}
-			},
-			HSID: {
 				validators: {
 					notEmpty: {
 						message: 'This cannot be empty!'

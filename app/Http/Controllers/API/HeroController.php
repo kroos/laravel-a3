@@ -37,7 +37,12 @@ class HeroController extends Controller
 	public function list(Request $request)
 	{
 		foreach (Charac0::where('c_status', 'A')->where('c_id', 'like', '%'.$request->term.'%')->get() as $k) {
-			$data[] = $k->c_id;
+			// $data[] = $k->c_id;
+			$data[] = [
+				'label' => $k->c_id.' => '.config('a3.hero'.$k->c_sheaderb),
+				'value' => $k->c_id,
+				'type' => config('a3.hero'.$k->c_sheaderb)
+			];
 		}
 		return $data;
 	}

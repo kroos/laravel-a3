@@ -9,19 +9,17 @@
 	@include('layouts.info')
 	@include('layouts.errorform')
 
-	{!! Form::model($mercenary_points, ['route' => ['mercenarypoints.update', $mercenary_points->c_id], 'method' => 'PATCH', 'id' => 'form', 'files' => true]) !!}
+	{!! Form::open(['route' => 'merceditpoints.store', 'id' => 'form', 'files' => true]) !!}
 
-	<h6>Please click on your hero below which you want to add your stat points</h6>
+	<h6>Please choose hero then choose mercenary to edit your stat points</h6>
 	<h6>Please make sure that all the values will not exceed 65530</h6>
-
-		@if($mercenary_points->hasmanycharac()->where('c_status', 'A')->count() > 0)
 
 			<div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
 				<label for="hero" class="col-4 col-form-label pt-0 text-right">Hero :</label>
 				<div class="col-4">
 					<select name="c_id" class="form-control {{ $errors->has('c_id') ? 'is-invalid' : NULL }}" id="hero">
 						<option value="">Please Choose</option>
-						@foreach($mercenary_points->hasmanycharac()->where('c_status', 'A')->get() as $char)
+						@foreach(App\Model\Charac0::where('c_status', 'A')->get() as $char)
 						<option value="{{ $char->c_id }}">{{ $char->c_id }}</option>
 						@endforeach
 					</select>
@@ -33,10 +31,8 @@
 				<div class="col-4">
 					<select name="HSID" class="form-control {{ $errors->has('HSID') ? 'is-invalid' : NULL }}" id="merc">
 						<option value="">Please Choose</option>
-						@foreach($mercenary_points->hasmanycharac()->where('c_status', 'A')->get() as $char)
-							@foreach($char->hasmanyhstable()->where('HSState', 1)->whereNull('DelDate')->get() as $merc)
-								<option value="{{ $merc->HSID }}" class="{{ $merc->MasterName }}">{{ $merc->HSName }}</option>
-							@endforeach
+						@foreach(App\Model\HSTable::whereNull('DelDate')->get() as $merc)
+						<option value="{{ $merc->HSID }}" class="{{ $merc->MasterName }}">{{ $merc->HSName }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -135,7 +131,7 @@
 			<div class="form-group row {{ $errors->has('points') ? ' has-error' : '' }}">
 				{{ Form::label( 'points1', 'Point Remaining : ', ['class' => 'col-4 col-form-label text-right'] ) }}
 				<div class="col-2">
-					<input type="number" name="points" value="{{ old('points') }}" class="form-control  {{ $errors->has('points') ? ' is-invalid' : NULL }}" id="points1" placeholder="Point Remaining" readonly>
+					<input type="number" name="points" value="{{ old('points') }}" class="form-control  {{ $errors->has('points') ? ' is-invalid' : NULL }}" id="points1" placeholder="Point Remaining">
 					@if ($errors->has('points'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('points') }}</strong>
@@ -155,9 +151,6 @@
 					{!! Form::button('Submit', ['class' => 'btn btn-primary', 'type' => 'submit']) !!}
 				</div>
 			</div>
-		@else
-		<p>Please create a character.</p>
-		@endif
 
 	{{ Form::close() }}
 
@@ -223,11 +216,11 @@ $('#merc').on('change', function() {
 	}
 
 		// setting up the value for attributes
-		$('#str1').val(obj.str).attr({"min" : obj.str});
-		$('#int1').val(obj.int).attr({"min" : obj.int});
-		$('#dex1').val(obj.dex).attr({"min" : obj.dex});
-		$('#vit1').val(obj.vit).attr({"min" : obj.vit});
-		$('#mana1').val(obj.mana).attr({"min" : obj.mana});
+		$('#str1').val(obj.str).attr({"min" : 0});
+		$('#int1').val(obj.int).attr({"min" : 0});
+		$('#dex1').val(obj.dex).attr({"min" : 0});
+		$('#vit1').val(obj.vit).attr({"min" : 0});
+		$('#mana1').val(obj.mana).attr({"min" : 0});
 		$('#points1').val(obj.points);
 
 		$("#str2").text(obj.str);
@@ -336,7 +329,7 @@ function update_totalpoints() {
 		// console.log(psum);
 	}
 	$('#points3').text( psum );
-	$('#points1').val( ($('#points2').text()) - ($('#points3').text()) );
+	// $('#points1').val( ($('#points2').text()) - ($('#points3').text()) );
 
 	// revalidate all the inputs
 	$('#form').bootstrapValidator('revalidateField', 'str');

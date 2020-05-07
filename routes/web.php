@@ -107,6 +107,54 @@ Route::post('ban_account', 'GMController@banstore')->name('banaccount.store');
 // unban account
 Route::get('unban_account', 'GMController@unbanaccount')->name('unbanaccount.index');
 
+// hero edit points
+Route::get('hero_edit_points', 'GMController@heroeditpointscreate')->name('heroeditpoints.create');
+Route::post('hero_edit_points', 'GMController@heroeditpointsstore')->name('heroeditpoints.store');
+
+// mercenary edit points
+Route::get('mercenary_edit_points', 'GMController@merceditpointscreate')->name('merceditpoints.create');
+Route::post('mercenary_edit_points', 'GMController@merceditpointsstore')->name('merceditpoints.store');
+
+// equip armor
+Route::get('equip_armor', 'GMController@equiparmorcreate')->name('equiparmor.create');
+Route::post('equip_armor', 'GMController@equiparmorstore')->name('equiparmor.store');
+
+// equip passive skill
+Route::get('learn_passive_skill', 'GMController@learnpsvskillcreate')->name('learnpsvskill.create');
+Route::post('learn_passive_skill', 'GMController@learnpsvskillstore')->name('learnpsvskill.store');
+
+// mercenary equip armor
+Route::get('mercenary_equip_armor', 'GMController@mercequiparmorcreate')->name('mercequiparmor.create');
+Route::post('mercenary_equip_armor', 'GMController@mercequiparmorstore')->name('mercequiparmor.store');
+
+// mercenary equip passive skill
+Route::get('mercenary_learn_passive_skill', 'GMController@merclearnpsvskillcreate')->name('merclearnpsvskill.create');
+Route::post('mercenary_learn_passive_skill', 'GMController@merclearnpsvskillstore')->name('merclearnpsvskill.store');
+
+// equip super super shue
+Route::get('equip_super_super_shue', 'GMController@equipsupersupershuecreate')->name('equipsupersupershue.create');
+Route::post('equip_super_super_shue', 'GMController@equipsupersupershuestore')->name('equipsupersupershue.store');
+
+// learn episode 5 skill
+Route::get('learn_epi5_skill', 'GMController@learnepi5skillcreate')->name('learnepi5skill.create');
+Route::post('learn_epi5_skill', 'GMController@learnepi5skillstore')->name('learnepi5skill.store');
+
+// edit level
+Route::get('edit_level', 'GMController@editlevelcreate')->name('editlevel.create');
+Route::post('edit_level', 'GMController@editlevelstore')->name('editlevel.store');
+
+// merc edit level
+Route::get('merc_edit_level', 'GMController@merceditlevelcreate')->name('merceditlevel.create');
+Route::post('merc_edit_level', 'GMController@merceditlevelstore')->name('merceditlevel.store');
+
+// edit lore
+Route::get('edit_lore', 'GMController@editlorecreate')->name('editlore.create');
+Route::post('edit_lore', 'GMController@editlorestore')->name('editlore.store');
+
+// edit lore
+Route::get('insert_grace_of_silbadu', 'GMController@insertgraceofsilbaducreate')->name('insertgraceofsilbadu.create');
+Route::post('insert_grace_of_silbadu', 'GMController@insertgraceofsilbadustore')->name('insertgraceofsilbadu.store');
+
 
 
 

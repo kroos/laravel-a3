@@ -18,33 +18,6 @@ class MercenaryController extends Controller
 		// $this->middleware(['auth', 'verified']);
 	}
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
-	public function index()
-	{
-	    //
-	}
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
-	public function store(Request $request)
-	{
-	    //
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
 	public function show(HSTable $hstable)
 	{
 		return [
@@ -58,26 +31,17 @@ class MercenaryController extends Controller
 		];
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, HSTable $hstable)
+	public function list(Request $request)
 	{
-	    //
+		foreach (HSTable::whereNull('HSState', 1)->whereNull('DelDate')->where('HSName', 'like', '%'.$request->term.'%')->get() as $k) {
+			// $data[] = $k->c_id;
+			$data[] = [
+				'label' => $k->HSName.' => '.config('a3.merc'.$k->Type),
+				'value' => $k->HSID,
+				'type' => config('a3.merc'.$k->Type)
+			];
+		}
+		return $data;
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  \App\Model\Charac0  $charac0
-	 * @return \Illuminate\Http\Response
-	 */
-	public function destroy(HSTable $hstable)
-	{
-	    //
-	}
 }

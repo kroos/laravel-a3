@@ -59,7 +59,7 @@ use Carbon\CarbonPeriod;
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{ route('infoaccount.index') }}">Account Info <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('convertgm.edit') }}">Changing Account Type <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('convertgm.edit') }}">GM Convert <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('convertpaidmembership.create') }}">Paid Membership <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('listpm.index') }}">List of Paid Membership <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('banaccount.create') }}">Ban Account <i class="fas fa-user-circle"></i></a>
@@ -68,31 +68,33 @@ use Carbon\CarbonPeriod;
 				</li>
 
 				<li class="nav-item dropdown">
-					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Game Master Editing Character
+					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Game Master Editing Hero
 						<svg class="bi bi-archive-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path fill-rule="evenodd" d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM6 7a.5.5 0 000 1h4a.5.5 0 000-1H6zM.8 1a.8.8 0 00-.8.8V3a.8.8 0 00.8.8h14.4A.8.8 0 0016 3V1.8a.8.8 0 00-.8-.8H.8z" clip-rule="evenodd"/>
 						</svg>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="{{ route('account.index') }}">Character Altering Points <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Mercenary Altering Points <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Equip Equipment And Passive Skill <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Mercenary Equip Equipment <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Equip Super Super Shue <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Learn Episode 5 Skill <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Altering Level <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Mercenary Altering Level <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Inserting Lore <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Grace Of Silbadu Insertion <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Inserting 1 Box of Items <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Inserting 1 Item <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Character Clone <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Guild Removal <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Info PK <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Altering PK timer <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('account.index') }}">Character Reset Rebirth <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('heroeditpoints.create') }}">Hero Edit Points <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merceditpoints.create') }}">Mercenary Edit Points <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equiparmor.create') }}">Equip Equipment <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('learnpsvskill.create') }}">Learn Passive Skill <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merclearnpsvskill.create') }}">Mercenary Learn Passive Skill <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('mercequiparmor.create') }}">Mercenary Equip Armor <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Equip Super Super Shue <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('learnepi5skill.create') }}">Learn Episode 5 Skill <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('editlevel.create') }}">Edit Level <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merceditlevel.create') }}">Mercenary Edit Level <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('editlore.create') }}">Edit Lore <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('insertgraceofsilbadu.create') }}">Insert Grace Of Silbadu <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting 1 Box of Items <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting 1 Item <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Hero Clone <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Guild Removal <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Info PK <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Edit PK timer <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Hero Reset Rebirth <i class="fas fa-user-circle"></i></a>
 					</div>
 				</li>
 
