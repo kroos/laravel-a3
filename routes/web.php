@@ -151,9 +151,33 @@ Route::post('merc_edit_level', 'GMController@merceditlevelstore')->name('mercedi
 Route::get('edit_lore', 'GMController@editlorecreate')->name('editlore.create');
 Route::post('edit_lore', 'GMController@editlorestore')->name('editlore.store');
 
-// edit lore
+// insert grace of silbadu
 Route::get('insert_grace_of_silbadu', 'GMController@insertgraceofsilbaducreate')->name('insertgraceofsilbadu.create');
 Route::post('insert_grace_of_silbadu', 'GMController@insertgraceofsilbadustore')->name('insertgraceofsilbadu.store');
+
+// insert 1 box of item
+Route::get('insert_1_box_of_item', 'GMController@insert1boxofitemcreate')->name('insert1boxofitem.create');
+Route::post('insert_1_box_of_item', 'GMController@insert1boxofitemstore')->name('insert1boxofitem.store');
+
+// insert 1 item
+Route::get('insert_1_item', 'GMController@insert1itemcreate')->name('insert1item.create');
+Route::post('insert_1_item', 'GMController@insert1itemstore')->name('insert1item.store');
+
+// insert hero clone
+Route::get('hero_clone', 'GMController@heroclonecreate')->name('heroclone.create');
+Route::post('hero_clone', 'GMController@heroclonestore')->name('heroclone.store');
+
+// insert remove knighthood
+Route::get('remove_knighthood', 'GMController@removeknighthoodcreate')->name('removeknighthood.create');
+Route::post('remove_knighthood', 'GMController@removeknighthoodstore')->name('removeknighthood.store');
+
+// info PK
+Route::get('info_PK', 'GMController@infoPKcreate')->name('infoPK.create');
+Route::post('info_PK', 'GMController@infoPKstore')->name('infoPK.store');
+
+// insert item manually
+Route::get('insert_item_manually', 'GMController@insertitemmanuallycreate')->name('insertitemmanually.create');
+Route::post('insert_item_manually', 'GMController@insertitemmanuallystore')->name('insertitemmanually.store');
 
 
 

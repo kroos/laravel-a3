@@ -87,14 +87,12 @@ use Carbon\CarbonPeriod;
 						<a class="dropdown-item" href="{{ route('merceditlevel.create') }}">Mercenary Edit Level <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('editlore.create') }}">Edit Lore <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insertgraceofsilbadu.create') }}">Insert Grace Of Silbadu <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting 1 Box of Items <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting 1 Item <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Hero Clone <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Guild Removal <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Info PK <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Edit PK timer <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Hero Reset Rebirth <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('insert1boxofitem.create') }}">Inserting 1 Box of Items <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('insert1item.create') }}">Inserting 1 Item <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('heroclone.create') }}">Hero Clone <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('removeknighthood.create') }}">Remove Knighthood <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('infoPK.create') }}">Info PK <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('insertitemmanually.create') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
 					</div>
 				</li>
 
@@ -124,24 +122,7 @@ use Carbon\CarbonPeriod;
 						@endif
 					</div>
 				</li>
-
-<!-- 				<li class="nav-item">
-					<a class="nav-link" href="{{ route('login') }}">Sign In <i class="fas fa-sign-in-alt"></i></a>
-				</li>
-				@if (Route::has('register'))
-					<li class="nav-item">
-						<a class="nav-link" href="{{ route('register') }}">Sign Up <i class="fas fa-user-plus"></i></a>
-					</li>
-				@endif -->
 			@else
-
-<!-- 				<li class="nav-item">
-					<a class="nav-link" href="">Fault Report</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="">Switches Access</a>
-				</li> -->
-
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown" class="btn btn-sm btn-info rounded-pill text-white nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>Management <i class="fas fa-user-cog"></i></a>
 

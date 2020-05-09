@@ -3,15 +3,15 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h1>Learn Episode V Skill</h1>
+		<h1>Remove Knighthood</h1>
 	</div>
 	<div class="card-body">
 	@include('layouts.info')
 	@include('layouts.errorform')
 
-	<h6>Learn episode 5 skill</h6>
+	<h6>This will remove guild or knighthood from the hero.</h6>
 
-	<form method="POST" action="{{ route('learnepi5skill.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('removeknighthood.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		@csrf
 
 			<div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
@@ -72,7 +72,13 @@ $( "#email" ).autocomplete({
 		$( "#type" ).html( ui.item.type );
 		return false;
 	}
-});
+})
+// .autocomplete( "instance" )._renderItem = function( ul, item ) {
+// 	return $( "<li>" )
+// 		.append( "<div>" + item.value + "<br>" + item.type + "</div>" )
+// 		.appendTo( ul );
+// }
+;
 
 ////////////////////////////////////////////////////////////////////////////////////
 // form validator
@@ -87,13 +93,6 @@ $( "#email" ).autocomplete({
 				validators: {
 					notEmpty: {
 						message: 'This cannot be empty!'
-					},
-				}
-			},
-			m_body: {
-				validators: {
-					notEmpty: {
-						message: 'Please choose. '
 					},
 				}
 			},

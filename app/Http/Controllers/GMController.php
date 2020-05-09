@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 // load db facade, not eloquent
 use Illuminate\Support\Facades\DB;
 
+// load helper array
+use Illuminate\Support\Arr;
+
 // load validation
 use App\Http\Requests\ConvertPMRequest;
 use App\Http\Requests\BanAccountRequest;
@@ -17,7 +20,9 @@ use App\Http\Requests\MercenaryArmorRequest;
 use App\Http\Requests\Epi5SkillRequest;
 use App\Http\Requests\MercEditLevelRequest;
 use App\Http\Requests\MercenaryRebirthRequest;
-// use App\Http\Requests\MercenaryRebirthRequest;
+use App\Http\Requests\Insert1BoxOfItemRequest;
+use App\Http\Requests\HeroCloneRequest;
+use App\Http\Requests\InfoPKRequest;
 
 // load helper
 use App\Helpers\Hero;
@@ -305,14 +310,143 @@ class GMController extends Controller
 
 	public function insertgraceofsilbadustore(Epi5SkillRequest $request)
 	{
-		// dd(config('a3.inserGOS.INVEN'));
-		Charac0::where($request->only('c_id'))->update([
-			'm_body' => Hero::set_hmbody('INVEN', config('a3.inserGOS.INVEN'), $request->c_id),
+		// dd($request->only('c_id'));
+		$r = Hero::get_hmbody('INVEN', $request->c_id);
+		Charac0::where('c_id', $request->c_id)->update([
+			'm_body' => Hero::set_hmbody('INVEN', config('a3.insertGOS.INVEN').$r, $request->c_id),
 		]);
 
 		$msg = 'Success update '.$request->c_id;
 		Session::flash('flash_message', $msg);
 		return redirect(route('insertgraceofsilbadu.create'));
+	}
+
+	public function insert1boxofitemcreate()
+	{
+		return view('gm.insert1boxofitem');
+	}
+
+	public function insert1boxofitemstore(Insert1BoxOfItemRequest $request)
+	{
+		// dd($request->all());
+		if ($request->has('box')) {
+			foreach($request->box as $k => $v) {
+				// echo $v['item'].' => '.$v['slot'].'<br />';
+				$r = Hero::get_hmbody('INVEN', $request->c_id);
+				// echo '17;164'.$v['item'].';131845;'.$v['slot'].';'.$r.'<br />';
+				Charac0::where('c_id', $request->c_id)->update([
+					'm_body' => Hero::set_hmbody('INVEN', '17;164'.$v['item'].';131845;'.$v['slot'].';'.$r, $request->c_id),
+				]);
+			}
+		}
+		$msg = 'Success update '.$request->c_id;
+		Session::flash('flash_message', $msg);
+		return redirect(route('insert1boxofitem.create'));
+	}
+
+	public function insert1itemcreate()
+	{
+		return view('gm.insert1item');
+	}
+
+	public function insert1itemstore(Insert1BoxOfItemRequest $request)
+	{
+		// dd($request->all());
+		if ($request->has('box')) {
+			foreach($request->box as $k => $v) {
+				// echo $v['item'].' => '.$v['slot'].'<br />';
+				$r = Hero::get_hmbody('INVEN', $request->c_id);
+				Charac0::where('c_id', $request->c_id)->update([
+					'm_body' => Hero::set_hmbody('INVEN', $v['item'].';'.$v['slot'].';'.$r, $request->c_id),
+				]);
+			}
+		}
+		$msg = 'Success update '.$request->c_id;
+		Session::flash('flash_message', $msg);
+		return redirect(route('insert1item.create'));
+	}
+
+	public function heroclonecreate()
+	{
+		return view('gm.heroclone');
+	}
+
+	public function heroclonestore(HeroCloneRequest $request)
+	{
+		// dd($request->all());
+		// check target is sctive and both type are same
+		$h1 = Charac0::where('c_id', $request->c_id1);
+		$h2 = Charac0::where('c_id', $request->c_id2);
+
+		if($h2->first()->c_status == 'X'){
+			$msg = 'It seems your target hero is inactive. Please choose another one.';
+		} if($h1->first()->c_sheaderb != $h2->first()->c_sheaderb) {
+			$msg = 'It seems your hero type is not match between each other. Please choose another one.';
+		} else {
+			$h2->update([
+				'c_sheaderc' => $h1->first()->c_sheaderc,
+				'c_headera' => $h1->first()->c_headera,
+				'c_headerb' => $h1->first()->c_headerb,
+				'c_headerc' => $h1->first()->c_headerc,
+				'd_cdate' => $h1->first()->d_cdate,
+				'd_udate' => $h1->first()->d_udate,
+				'm_body' => Hero::set_hmbody('SINFO', 0, $request->c_id1),				// remove knigthood
+				'rb' => $h1->first()->rb,
+				'times_rb' => $h1->first()->times_rb,
+			]);
+			$msg = 'Done cloning process for '.$request->c_id1;
+		}
+		Session::flash('flash_message', $msg);
+		return redirect(route('heroclone.create'));
+	}
+
+	public function removeknighthoodcreate()
+	{
+		return view('gm.removeknighthood');
+	}
+
+	public function removeknighthoodstore(Request $request)
+	{
+		// dd($request->all());
+		Charac0::where($request->only('c_id'))->update([
+			'm_body' => Hero::set_hmbody('SINFO', 0, $request->c_id),
+		]);
+		$msg = 'Success remove knighthood from '.$request->c_id;
+		Session::flash('flash_message', $msg);
+		return redirect(route('removeknighthood.create'));
+	}
+
+	public function infoPKcreate()
+	{
+		return view('gm.infoPK');
+	}
+
+	public function infoPKstore(InfoPKRequest $request)
+	{
+		// dd($request->all());
+		Charac0::where($request->only('c_id'))->update([
+			'm_body' => Hero::set_hmbody('RTM', $request->timer, $request->c_id),
+		]);
+		$msg = 'Success edit timer for '.$request->c_id;
+		Session::flash('flash_message', $msg);
+		return redirect(route('infoPK.create'));
+	}
+
+	public function insertitemmanuallycreate()
+	{
+		return view('gm.insertitemmanually');
+	}
+
+	public function insertitemmanuallystore(Request $request)
+	{
+		// dd($request->all());
+		$r = Hero::get_hmbody('INVEN', $request->c_id);
+		Charac0::where($request->only('c_id'))->update([
+			'm_body' => Hero::set_hmbody('INVEN', $request->inven.$r, $request->c_id),
+		]);
+		$msg = 'Success input item in the inventory for '.$request->c_id;
+		Session::flash('flash_message', $msg);
+		return redirect(route('insertitemmanually.create'));
 	}
 
 

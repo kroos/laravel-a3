@@ -219,11 +219,144 @@ return [
 
 ##################################################################################################
 	// insert grace of silbadu
-	'inserGOS' => [
+	'insertGOS' => [
 		'INVEN' => '9586;123;123;0;9586;123;123;1;9586;123;123;2;9586;123;123;3;9586;123;123;4;9586;123;123;5;9586;123;123;6;9586;123;123;7;9586;123;123;8;9586;123;123;9',
 	],
 
+##################################################################################################
+	// inventory slot
+	'invslot' => [
+		'0' => 'Slot 1',
+		'1' => 'Slot 2',
+		'2' => 'Slot 3',
+		'3' => 'Slot 4',
+		'4' => 'Slot 5',
+		'5' => 'Slot 6',
+		'6' => 'Slot 7',
+		'7' => 'Slot 8',
+		'8' => 'Slot 9',
+		'9' => 'Slot 10',
+		'10' => 'Slot 11',
+		'11' => 'Slot 12',
+		'12' => 'Slot 13',
+		'13' => 'Slot 14',
+		'14' => 'Slot 15',
+		'15' => 'Slot 16',
+		'16' => 'Slot 17',
+		'17' => 'Slot 18',
+		'18' => 'Slot 19',
+		'19' => 'Slot 20',
+	],
 
+##################################################################################################
+	// insert 1 box of item
+	'insert1box' => [
+		'Upgrade Item' => [
+			'4544' => 'Upgrade Jewel',
+			'4545' => 'Degrade Jewel',
+			'5570' => 'Small Master Stone',
+			'5571' => 'Large Master Stone',
+			'5795' => 'Small Juego',
+			'5796' => 'Large Juego',
+		],
+		'Gems' => [
+			'6596' => 'Topaz',
+			'6597' => 'Ruby',
+			'6598' => 'Sapphire',
+		],
+		'Gems' => [
+			'6815' => 'Garnet',
+			'6816' => 'Opal',
+			'6817' => 'Peridot',
+		],
+		'Runes' => [
+			'7631' => 'Ing (9)',
+			'7632' => 'Odal (10)',
+		],
+		'Eutuxias' => [
+			'7842' => 'Eutuxia',
+		],
+		'Stabiliser' => [
+			'7958' => 'Catalyst',
+			'7959' => 'Stabilizer',
+		],
+		'Crystals' => [
+			'7960' => 'Shuterburr Crystal',
+			'7961' => 'Kardite Crystal',
+			'7962' => 'Syldinon Crystal',
+			'7963' => 'Kardion Crystal',
+		],
+		'Crafting Items' => [
+			'7966' => 'Secret of Manufacturing',
+			'7967' => 'Sap of Silbadu',
+			'7968' => 'Silbadu Branch',
+			'8074' => 'Root of Shilbadu',
+		],
+		'High Grade Craft Item' => [
+			'7977' => 'Aiigis',
+			'7978' => 'Drapurr',
+			'7979' => 'Kartas',
+			'8073' => 'Kripis',
+		],
+		'Orb of Magic' => [
+			'8070' => 'Orb of Magic',
+		],
+		'Higher Grade Crafting Item' => [
+			'8099' => 'Stone Of Hope',
+			'6049' => 'Treasure Of Destruction',
+		],
+		'Highest Grade Crafting Item' => [
+			'7982' => 'Paranum',
+			'7983' => 'Satinum',
+			'7984' => 'Crystal of Brilliance',
+			'7985' => 'Crystal of Stability',
+		],
+		'Unique Craft Items' => [
+			'8093' => 'Decision to Upgrade',
+			'8094' => 'Decision to Extreme',
+			'8095' => 'Soul Of Silbadu',
+		],
+	],
+
+##################################################################################################
+	// insert 1 item
+	'insert1item' => [
+		'G8 Unique Equipments' => [
+			'230513;4294953087;265751' => 'G8 Uni Warrior Sword',
+			'230514;4294953215;265751' => 'G8 Uni Warrior Axe',
+			'230515;4294953151;265751' => 'G8 Uni Warrior Spear',
+			'230518;4294952319;265751' => 'G8 Uni Holy Knight Sword',
+			'230519;4294952383;265751' => 'G8 Uni Holy Knight Mace',
+			'230520;4294952511;527895' => 'G8 Uni Archer Bow',
+			'230521;4294952575;265751' => 'G8 Uni Archer Cross Bow',
+			'231540;4294953279;527895' => 'G8 Uni Mage Dex Staff',
+			'231541;4294953663;658967' => 'G8 Uni Mage Intel Staff',
+		],
+		'G9 Unique Equipments' => [
+			'230522;4294953087;396823' => 'G9 Uni Warrior Sword',
+			'230523;4294953151;396823' => 'G9 Uni Warrior Axe',
+			'230524;4294953215;396823' => 'G9 Uni Warrior Spear',
+			'230527;4294952319;396823' => 'G9 Uni Holy Knight Sword',
+			'230528;4294952383;396823' => 'G9 Uni Holy Knight Mace',
+			'230529;4294952511;396823' => 'G9 Uni Archer Bow',
+			'230530;4294952575;396823' => 'G9 Uni Archer Cross Bow',
+			'231549;4294953279;790039' => 'G9 Uni Mage Dex Staff',
+			'231550;4294953663;658967' => 'G9 Uni Mage Intel Staff',
+		],
+		'Unique Accessories' => [
+			'5176;4294961121;132404' => 'Redyan\'s Ring',
+			'5178;4294961121;132404' => 'Kwaon\'s Ring',
+			'5179;4294961121;132404' => 'Billmade\'s Ring',
+			'5180;4294961121;132404' => 'Sirrd\'s Ring',
+		],
+		'Town Portal' => [
+			'5;99;123' => '99 Town Portal'
+		],
+	],
+
+##################################################################################################
+##################################################################################################
+##################################################################################################
 
 
 

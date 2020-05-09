@@ -41,7 +41,9 @@ class HeroController extends Controller
 			$data[] = [
 				'label' => $k->c_id.' => '.config('a3.hero'.$k->c_sheaderb),
 				'value' => $k->c_id,
-				'type' => config('a3.hero'.$k->c_sheaderb)
+				'type' => config('a3.hero'.$k->c_sheaderb),
+				'pk' => Hero::get_hmbody('PK', $k->c_id),
+				'rtm' => Hero::get_hmbody('RTM', $k->c_id),
 			];
 		}
 		return $data;
@@ -55,6 +57,7 @@ class HeroController extends Controller
 			'message' => 'Success convert account.'
 		];
 	}
+
 
 
 

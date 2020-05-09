@@ -3,15 +3,15 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h1>Learn Episode V Skill</h1>
+		<h1>Info Player Kill</h1>
 	</div>
 	<div class="card-body">
 	@include('layouts.info')
 	@include('layouts.errorform')
 
-	<h6>Learn episode 5 skill</h6>
+	<h6>Insert Hero to see the Player Kill Info</h6>
 
-	<form method="POST" action="{{ route('learnepi5skill.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('infoPK.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		@csrf
 
 			<div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
@@ -24,6 +24,28 @@
 						<strong>{{ $errors->first('c_id') }}</strong>
 					</span>
 					@endif
+				</div>
+			</div>
+
+			<div class="form-group row {{ $errors->has('timer') ? ' has-error' : '' }}">
+				{{ Form::label( 'tm', 'Timer : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+				<div class="col-6">
+					{{ Form::number('timer', @$value, ['class' => 'form-control'.($errors->has('timer') ? ' is-invalid' : NULL), 'id' => 'tm', 'placeholder' => 'Timer', 'min' => 0]) }}
+					<span id="type"></span>
+					@if ($errors->has('timer'))
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('timer') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<p><strong class="hero"></strong> pking people for <strong id="pk"></strong> times.</p>
+					<p>And timer before <strong class="hero"></strong> can PK again is = <strong id="rtm"></strong></p>
+					<p>If the timer is 0, <strong class="hero"></strong> can PK at anytime he/she want and if you don't want <strong class="hero"></strong> to PK, set it timer more than 1,500 or higher, for example : maybe 20,000 ?</p>
+					<p>If you set to only 1,500, <strong class="hero"></strong> can bail out the timer by using its lore.</p>
 				</div>
 			</div>
 
@@ -70,9 +92,18 @@ $( "#email" ).autocomplete({
 	},
 	select: function( event, ui ) {
 		$( "#type" ).html( ui.item.type );
+		$( ".hero" ).html( ui.item.value );
+		$( "#pk" ).html( ui.item.pk );
+		$( "#rtm" ).html( ui.item.rtm );
 		return false;
 	}
-});
+})
+// .autocomplete( "instance" )._renderItem = function( ul, item ) {
+// 	return $( "<li>" )
+// 		.append( "<div>" + item.value + "<br>" + item.type + "</div>" )
+// 		.appendTo( ul );
+// }
+;
 
 ////////////////////////////////////////////////////////////////////////////////////
 // form validator
@@ -87,13 +118,6 @@ $( "#email" ).autocomplete({
 				validators: {
 					notEmpty: {
 						message: 'This cannot be empty!'
-					},
-				}
-			},
-			m_body: {
-				validators: {
-					notEmpty: {
-						message: 'Please choose. '
 					},
 				}
 			},

@@ -3,15 +3,26 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h1>Learn Episode V Skill</h1>
+		<h1>Insert Item Manually</h1>
 	</div>
 	<div class="card-body">
 	@include('layouts.info')
 	@include('layouts.errorform')
 
-	<h6>Learn episode 5 skill</h6>
+	<h6>Please take a listen and look carefully becos this 1 is the most trickiest part of the tools.</h6>
+	<h6>This will wipe out all hero item in the inventory to make sure that it wont break the database.</h6>
+	<h6>First of all, just put the hero name, its easy.</h6>
+	<h6>2nd u have to put the code, the code must be consists of 4 sections and the format should look like this</h6>
+	<h6><strong>xxxxxx;xxxxxx;xxxxx;slotnumber;</strong></h6>
+	<h6>For example : if you want to inject 1 Upgrade Jewel inside a character (please dont do that, wasting your time....) so use this code :</h6>
+	<h6>6144;123321;128;4;</h6>
+	<h6>Make sure slot number <strong>5</strong> is empty, yes... number 5 not number 4.. becos the system start counting from 0, not from 1</h6>
+	<h6>So for slot number 5, the system count like this..</h6>
+	<h6>0 , 1 , 2 , 3 , 4  <---- number 5 to us...</h6>
+	<h6>Please take a look at the sign ";" at the end of the code, if you forgot to put the sign ";" at the end, then the whole character might be corrupted</h6>
+	<h6>So use a high caution using this tools</h6>
 
-	<form method="POST" action="{{ route('learnepi5skill.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('insertitemmanually.store') }}" id="form" accept-charset="UTF-8" enctype="multipart/form-data">
 		@csrf
 
 			<div class="form-group row {{ $errors->has('c_id') ? ' has-error' : '' }}">
@@ -22,6 +33,19 @@
 					@if ($errors->has('c_id'))
 					<span class="invalid-feedback" role="alert">
 						<strong>{{ $errors->first('c_id') }}</strong>
+					</span>
+					@endif
+				</div>
+			</div>
+
+			<div class="form-group row {{ $errors->has('inven') ? ' has-error' : '' }}">
+				{{ Form::label( 'inven', 'Item : ', ['class' => 'col-4 col-form-label text-right'] ) }}
+				<div class="col-6">
+					{{ Form::text('inven', @$value, ['class' => 'form-control'.($errors->has('inven') ? ' is-invalid' : NULL), 'id' => 'inven', 'placeholder' => 'Item']) }}
+					<span id="type"></span>
+					@if ($errors->has('inven'))
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('inven') }}</strong>
 					</span>
 					@endif
 				</div>
@@ -90,10 +114,10 @@ $( "#email" ).autocomplete({
 					},
 				}
 			},
-			m_body: {
+			inven: {
 				validators: {
 					notEmpty: {
-						message: 'Please choose. '
+						message: 'This cannot be empty '
 					},
 				}
 			},
