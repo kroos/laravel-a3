@@ -1,0 +1,85 @@
+@SQUEST_4_DISABLE - Disables Special Quest 1-4
+@SQUEST_4_ENABLE - Enables Special Quest 1-4
+@OXSWAP - Swaps the Question of OX Quiz Zone
+@OXREVIVE - Revives the Player in OX Quiz Zone
+@OXEND - Ends OX Session
+@QEND - Close Down Questions in OX Quiz Zone
+@OXCLOSE - Close Down OX Quiz Zone
+@CUR_MAP - Gives Information About the Current Map
+@SHOW_BLOCK -
+@TYR_WIN - Announce Winner for Tournament Mode
+@TYR_END - End Tournament Mode
+@TYR_CONTINUE - Continue Tournament Mode
+@TYR_CANCEL - Pause Tournament Mode
+@TYR_START - Start Tournament Mode
+@TYR_STATE - State of Tournament Mode
+@NEVIA_LIMIT - Restricts number of people in Nevia Canyon
+@STAT - Gives information about the character
+@NEVIA_REWARD - Rewards for Nevia War Winners
+@NEVIA_START - Start Nevia War
+@GOD - Invincible Mode
+@GIFT - Gives Gift
+@GMMONSTER - Enables Monster Mode
+@QEXPEVENT - Doubles Quest Experience Event
+@MAPLEVEL - Restricts Map Entry for players.
+@NPCSET - Sets NPC Number for that map
+@NPCSUMMON - Spawns a Mob of creatures
+
+@RELOAD_SVROPTION
+@RELOAD_TOWER - Restart Tower Event
+@TMDAY_TW - Status of TM for Tomorrow
+@TMDAY_TY - Status of TM for Today
+@TM_OPTION - TM Options
+@EVENT - Info about events in progress
+@EXPEVENT - Double Experience event
+@MONEYEVENT - Double Money Event
+@TAPLIST - List of Tapped Players
+@TAP - Taps the Chat of that player
+@WSHOUT - Sends a shout in Grey
+@HIDE - Invisible Mode
+@SBAN - Bans Shout
+@BAN - Bans Chat
+@RECALL - Teleport a player to you
+@SHOUT - Sends a shout
+@GO - Teleports you to that map
+@FOLLOW - Teleports you to that player
+@WHERE - Current Co-ordinates
+@INFO - ID and IP Address of the player
+@RETURN - Returns player to town
+@DROP - Kicks the player out of the server 
+
+
+
+Certain commands like those listed below, have to be done via the friend chat window. They will NOT WORK in Knighthood chat!
+
+First, add yourself as a friend. Then chat with yourself, a dialog box should open. Like the normal commands, @ following by the following commands:
+
+GM COMMAND
+@HSVITAL - Increases Vitality of Mercenary (In Chat Mode)
+@HSMAGIC - Increases Magic of Mercenary (In Chat Mode)
+@HSMANA - Increases Mana of Mercenary (In Chat Mode)
+@HSDEX - Increases Dexterity of Mercenary (In Chat Mode)
+@HSSTR - Increases Strength of Mercenary (In Chat Mode)
+@HSEXP - Increases Experience of Mercenary (In Chat Mode)
+@HSLEVELUP - Increases Level of Mercenary (In Chat Mode)
+@QUESTCOMP - Completes Current Quest (In Chat Mode)
+@CLANID - Gives the ID of the Clan (In Chat Mode)
+@DOUBLE - Toggles Double Item Event (In Chat Mode)
+@TAXOFF - Stops Taxing (In Chat Mode)
+@TAXON - Starts Taxing (In Chat Mode)
+@SQRELOAD - Restarts the Special Quest
+@MOB - How many monsters are there in that map? (In Chat Mode)
+@SKILLMASTER - Resets Skills Information (In Chat Mode)
+@PETLEVEL - Increases Pet Level (In Chat Mode)
+@EXP - Gives Experience (In Chat Mode)
+@MYLEVEL - Increases Level
+@MONEY - Gives Money (In Chat Mode)
+@BEGINNERSET - Gives G5 Set of All Types (In Chat Mode)
+@ITEM - Gives Item (In Chat Mode)
+@LORE - Gives Lore (In Chat Mode)
+@VITAL - Gives Vitality (In Chat Mode)
+@MANA - Gives Mana (In Chat Mode)
+@MAGIC - Gives Magic (In Chat Mode)
+@DEX - Gives Dexterity (In Chat Mode)
+@STR - Gives Strength (In Chat Mode)
+@HELP - How to type the Commands? (In Chat Mode)

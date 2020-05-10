@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // API AJAX Controller
 Route::get('remote/emailusername', 'API\AccountController@emailusername')->name('remote.emailusername');
+Route::get('remote/serialnumber', 'API\SerialListController@serialnumber')->name('remote.serialnumber');
 
 Route::post('charac0/{charac0}', 'API\HeroController@show')->name('hero.show');
 Route::post('hstable/{hstable}', 'API\MercenaryController@show')->name('mercenary.show');

@@ -23,6 +23,7 @@ use App\Http\Requests\MercenaryRebirthRequest;
 use App\Http\Requests\Insert1BoxOfItemRequest;
 use App\Http\Requests\HeroCloneRequest;
 use App\Http\Requests\InfoPKRequest;
+use App\Http\Requests\SerialListRequest;
 
 // load helper
 use App\Helpers\Hero;
@@ -36,6 +37,7 @@ use App\Model\Account;
 use App\Model\Charac0;
 use App\Model\HSTable;
 use App\Model\HS;
+use App\Model\SerialList;
 
 // load session
 use Session;
@@ -447,6 +449,25 @@ class GMController extends Controller
 		$msg = 'Success input item in the inventory for '.$request->c_id;
 		Session::flash('flash_message', $msg);
 		return redirect(route('insertitemmanually.create'));
+	}
+
+	public function seriallistcreate()
+	{
+		return view('gm.seriallist');
+	}
+
+	public function serialliststore(SerialListRequest $request)
+	{
+		// dd($request->all());
+		SerialList::insert($request->except(['_token']));
+		$msg = 'Success insert data. ';
+		Session::flash('flash_message', $msg);
+		return redirect(route('seriallist.create'));
+	}
+
+	public function itemcalculator()
+	{
+		return view('gm.itemcalculator');
 	}
 
 

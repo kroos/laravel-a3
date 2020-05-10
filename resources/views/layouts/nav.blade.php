@@ -93,6 +93,8 @@ use Carbon\CarbonPeriod;
 						<a class="dropdown-item" href="{{ route('removeknighthood.create') }}">Remove Knighthood <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('infoPK.create') }}">Info PK <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insertitemmanually.create') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('seriallist.create') }}">Serial List <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('itemcalculator.index') }}">Item Calculator <i class="fas fa-user-circle"></i></a>
 					</div>
 				</li>
 

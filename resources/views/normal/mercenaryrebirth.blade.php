@@ -47,6 +47,11 @@
 						<option value="{{ $char->c_id }}">{{ $char->c_id }}</option>
 						@endforeach
 					</select>
+					@if ($errors->has('c_id'))
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('c_id') }}</strong>
+					</span>
+					@endif
 				</div>
 			</div>
 
@@ -61,6 +66,11 @@
 							@endforeach
 						@endforeach
 					</select>
+					@if ($errors->has('HSID'))
+					<span class="invalid-feedback" role="alert">
+						<strong>{{ $errors->first('HSID') }}</strong>
+					</span>
+					@endif
 				</div>
 			</div>
 
