@@ -772,11 +772,9 @@ class NormalController extends Controller
 		} elseif ($request->str < 0 || $request->int < 0 || $request->dex < 0 || $request->vit < 0 || $request->mana < 0) {
 			$msg = 'Please check your attributes,one of it is below than 0.';
 		} else {
-			foreach ($merc as $key) {
-				$key->hasmanyhstable()->where('HSID', $request->HSID)->whereNull('DelDate')->update([
-					'Ability' => Mercenary::set_ability($request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->HSID),
-				]);
-			}
+			HSTable::find($request->HSID)->update([
+				'Ability' => Mercenary::set_ability($request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->HSID),
+			]);
 			$msg = 'Data successfully update!';
 		}
 		Session::flash('flash_message', $msg);
