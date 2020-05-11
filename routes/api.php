@@ -25,7 +25,7 @@ Route::post('charac0/{charac0}', 'API\HeroController@show')->name('hero.show');
 Route::post('hstable/{hstable}', 'API\MercenaryController@show')->name('mercenary.show');
 
 // gm info account
-Route::post('infoaccount', 'API\AccountController@infoaccount')->name('infoaccount.index');
+Route::post('/infoaccount', 'API\AccountController@infoaccount')->name('remote.infoaccount');
 
 // convert gm
 Route::post('convert_gm', 'API\HeroController@list')->name('list.index');

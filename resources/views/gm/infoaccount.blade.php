@@ -42,7 +42,7 @@ $('#info').DataTable({
 	"order": [[5, "asc" ]],	// sorting the 2nd column ascending
 	// responsive: true
 	"ajax": {
-		"url": '/api/infoaccount',
+		"url": '{{ route('remote.infoaccount') }}',
 		"type": "POST",
 		'data': {
 			'_token' : $('meta[name=csrf-token]').attr('content'),
