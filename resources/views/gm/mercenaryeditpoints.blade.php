@@ -181,7 +181,7 @@ $('#merc').on('change', function() {
 
 	// ajax for finding hero type
 	var data1 = $.ajax({
-		url: "/api/hstable/" + $selection.val(),
+		url: "{{ url('/api/hstable/') }}" + $selection.val(),
 		type: "POST",
 		data: {_token: '{!! csrf_token() !!}'},
 		dataType: 'json',

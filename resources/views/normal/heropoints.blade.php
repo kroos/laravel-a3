@@ -168,7 +168,7 @@ $('#hero').on('change', function() {
 
 	// ajax for finding hero type
 	var data1 = $.ajax({
-		url: "/api/charac0/" + $selection.val(),
+		url: "{{ url('/api/charac0/') }}/" + $selection.val(),
 		type: "POST",
 		data: {_token: '{!! csrf_token() !!}'},
 		dataType: 'json',
