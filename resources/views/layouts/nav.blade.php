@@ -76,23 +76,23 @@ use Carbon\CarbonPeriod;
 
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{ route('heroeditpoints.create') }}">Hero Edit Points <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('merceditpoints.create') }}">Mercenary Edit Points <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('equiparmor.create') }}">Equip Equipment <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('learnpsvskill.create') }}">Learn Passive Skill <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('merclearnpsvskill.create') }}">Mercenary Learn Passive Skill <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('mercequiparmor.create') }}">Mercenary Equip Armor <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('equipsupersupershue.create') }}">Equip Super Super Shue <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('learnepi5skill.create') }}">Learn Episode 5 Skill <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('editlevel.create') }}">Edit Level <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('merceditlevel.create') }}">Mercenary Edit Level <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('editlore.create') }}">Edit Lore <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insertgraceofsilbadu.create') }}">Insert Grace Of Silbadu <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insert1boxofitem.create') }}">Inserting 1 Box of Items <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insert1item.create') }}">Inserting 1 Item <i class="fas fa-user-circle"></i></a>
-						<a class="dropdown-item" href="{{ route('heroclone.create') }}">Hero Clone <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('removeknighthood.create') }}">Remove Knighthood <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('infoPK.create') }}">Info PK <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('insertitemmanually.create') }}">Inserting Items Manually <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merceditlevel.create') }}">Mercenary Edit Level <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merceditpoints.create') }}">Mercenary Edit Points <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('mercequiparmor.create') }}">Mercenary Equip Armor <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('merclearnpsvskill.create') }}">Mercenary Learn Passive Skill <i class="fas fa-user-circle"></i></a>
+						<a class="dropdown-item" href="{{ route('heroclone.create') }}">Hero Clone <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('seriallist.create') }}">Serial List <i class="fas fa-user-circle"></i></a>
 						<a class="dropdown-item" href="{{ route('itemcalculator.index') }}">Item Calculator <i class="fas fa-user-circle"></i></a>
 					</div>
