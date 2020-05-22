@@ -61,7 +61,7 @@
 					<select name="HSID" class="form-control {{ $errors->has('HSID') ? 'is-invalid' : NULL }}" id="merc">
 						<option value="">Please Choose</option>
 						@foreach($mercenary_rebirth->hasmanycharac()->where('c_status', 'A')->get() as $char)
-							@foreach($char->hasmanyhstable()->where('HSState', 1)->whereNull('DelDate')->get() as $merc)
+							@foreach($char->hasmanyhstable()->where('HSState', 0)->whereNull('DelDate')->get() as $merc)
 								<option value="{{ $merc->HSID }}" class="{{ $merc->MasterName }}">{{ $merc->HSName }}</option>
 							@endforeach
 						@endforeach

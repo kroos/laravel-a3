@@ -149,7 +149,7 @@ class GMController extends Controller
 	public function merceditpointsstore(MercenaryStatRequest $request)
 	{
 		// dd($request->all());
-		HSTable::find($request->HSID)->whereNull('DelDate')->update([
+		HSTable::where($request->only('HSID'))->whereNull('DelDate')->update([
 			'Ability' => Mercenary::set_ability( $request->str, $request->int, $request->dex, $request->vit, $request->mana, $request->points, $request->HSID ),
 		]);
 		$msg = 'Success update '.$request->HSID;
