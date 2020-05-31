@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 // welcome controller
 Route::get('/', 'WelcomeController@index')->name('welcome')->middleware('guest');
 
+// Route::get('/', function(){
+// 	return view('layouts.index');
+// });
+
 // forum
 Route::resources(['postCategory' => 'Forum\PostCategoryController']);
 Route::resources(['post' => 'Forum\PostController']);
