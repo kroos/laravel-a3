@@ -2,7 +2,7 @@
 
 @section('content')
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"><h1>{{ __('Register') }}</h1></div>
 
                 <div class="card-body">
         @include('layouts.info')

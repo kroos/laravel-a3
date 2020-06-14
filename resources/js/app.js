@@ -10,13 +10,10 @@ try {
 
 
 	require('@claviska/jquery-minicolors');
-	require('bootstrap-carousel-swipe');
 	require('datatables.net');
 	require('datatables.net-bs4');
 	require('datatables.net-colreorder-bs4');
 	require('datatables.net-responsive-bs4');
-	require('jquery-touchswipe');
-	require('jquery-viewport-checker');
 	require('jquery.cookie');
 	require('pc-bootstrap4-datetimepicker');
 	require('select2');
@@ -28,6 +25,10 @@ try {
 	require('chartjs-color/index');
 	require('chartjs-color-string/color-string');
 
+	// for mobirise
+	// none npm
+	require('./web/cookies-alert-plugin/cookies-alert-core');
+	require('./web/cookies-alert-plugin/cookies-alert-script');
 
 	require ('./bootstrapValidator4/js/bootstrapValidator');
 	require ('jquery-chained/jquery.chained.js');

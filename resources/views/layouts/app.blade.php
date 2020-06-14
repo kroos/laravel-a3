@@ -51,7 +51,8 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-4">
-					<div><img src="{{ asset('images/logo-149x103.png') }}" class="img-fluid rounded" width="10%" alt="logo">
+					<div>
+						<img src="{{ asset('images/logo-149x103.png') }}" class="img-fluid rounded" width="10%" alt="logo">
 						<span class="font-weight-bold">{{ config('app.name') }} - All Rights Reserved</span> <br>
 						<span>&copy; Copyright {{ \Carbon\Carbon::now()->format('Y') }}</span>
 					</div>

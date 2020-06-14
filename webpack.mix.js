@@ -30,6 +30,12 @@ mix.js('resources/js/app.js', 'public/js')
 		// 'resources/js/jquery-ui/css/jquery-ui.structure.css',
 		// 'resources/js/jquery-ui/css/jquery-ui.themes.css',
 		'resources/sass/animate/animate.css',
+
+		// for mobirise
+		// from npm
+		// none npm
+		'resources/sass/web/gdpr-plugin/gdpr-styles.css',
+
 		], 'public/css/app.css')
 	// .setPublicPath('public/)
 	.sourceMaps()
