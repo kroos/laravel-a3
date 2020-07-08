@@ -1,6 +1,6 @@
 /*!
-  * Bootstrap v4.4.1 (https://getbootstrap.com/)
-  * Copyright 2011-2019 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Bootstrap v4.5.0 (https://getbootstrap.com/)
+  * Copyright 2011-2020 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 
@@ -23,7 +23,7 @@
  */
 
 /*!
- * FullCalendar v3.10.1
+ * FullCalendar v3.10.2
  * Docs & License: https://fullcalendar.io/
  * (c) 2019 Adam Shaw
  */
@@ -530,16 +530,16 @@
  * ©2010-2019 SpryMedia Ltd - datatables.net/license
  */
 
-/*! DataTables 1.10.20
- * ©2008-2019 SpryMedia Ltd - datatables.net/license
+/*! DataTables 1.10.21
+ * ©2008-2020 SpryMedia Ltd - datatables.net/license
  */
 
 /*! DataTables Bootstrap 4 integration
  * ©2011-2017 SpryMedia Ltd - datatables.net/license
  */
 
-/*! Responsive 2.2.3
- * 2014-2018 SpryMedia Ltd - datatables.net/license
+/*! Responsive 2.2.5
+ * 2014-2020 SpryMedia Ltd - datatables.net/license
  */
 
 /*! version : 4.17.47
