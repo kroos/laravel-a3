@@ -26,7 +26,7 @@
         "ajv": "^6.12.3",
         "animate.css": "^3.7.2",
         "bootstrap": "^4.5.0",
-        "chart.js": "^2.9.3",
+        "chart.js": "^2.9.4",
         "colresizable": "^1.6.0",
         "datatables.net": "^1.10.21",
         "datatables.net-bs4": "^1.10.21",
