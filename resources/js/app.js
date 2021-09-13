@@ -14,16 +14,12 @@ try {
 	require('datatables.net-bs4');
 	require('datatables.net-colreorder-bs4');
 	require('datatables.net-responsive-bs4');
-	require('jquery.cookie');
 	require('pc-bootstrap4-datetimepicker');
 	require('select2');
-	require('colresizable/colResizable-1.6.min');
 	window.moment = require('moment');
 	window.swal = require ('sweetalert2');
 	require('fullcalendar');
 	require('chart.js/dist/Chart');
-	require('chartjs-color/index');
-	require('chartjs-color-string/color-string');
 
 	// for mobirise
 	// none npm

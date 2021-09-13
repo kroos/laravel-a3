@@ -35,6 +35,7 @@ class AccountController extends Controller
 	public function infoaccount()
 	{
 		// $i = 0;
+		$d['data'] = [];
 		foreach(Account::where('c_status', 'A')->get() as $v) {
 			foreach($v->hasmanycharac()->where('c_status', 'A')->get() as $k) {
 				$d['data'][] = [
@@ -58,6 +59,7 @@ class AccountController extends Controller
 
 	public function listofpaidmembership()
 	{
+		$d['data'] = [];
 		if (Account::where('c_status', 'A')->whereIn('c_sheaderb', [2, 3, 4])->get()->count() > 0) {
 			foreach(Account::where('c_status', 'A')->whereIn('c_sheaderb', [2, 3, 4])->get() as $v) {
 				foreach($v->hasmanycharac()->where('c_status', 'A')->get() as $k) {
