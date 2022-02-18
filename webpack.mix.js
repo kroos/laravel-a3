@@ -22,6 +22,7 @@ mix.js('resources/js/app.js', 'public/js')
 		'node_modules/datatables.net-colreorder-bs4/css/colReorder.bootstrap4.css',
 		'node_modules/@claviska/jquery-minicolors/jquery.minicolors.css',
 		'node_modules/fullcalendar/dist/fullcalendar.css',
+<<<<<<< HEAD
 		// 'node_modules/chart.js/dist/chart.css',
 		'node_modules/animate.css/animate.css',
 		'node_modules/jarallax/dist/jarallax.css',
@@ -30,6 +31,11 @@ mix.js('resources/js/app.js', 'public/js')
 		// 'resources/js/jquery-ui/css/jquery-ui.structure.css',
 		// 'resources/js/jquery-ui/css/jquery-ui.themes.css',
 		// 'resources/sass/animate/animate.css',
+=======
+		'node_modules/animate.css/animate.css',
+		'node_modules/jarallax/dist/jarallax.css',
+		'node_modules/jquery-ui/themes/base/all.css',
+>>>>>>> 861be88c59e5dc101f5891b7f24bf4fc37b9a5c1
 
 		// for mobirise
 		// from npm
