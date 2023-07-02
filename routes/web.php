@@ -189,4 +189,3 @@ Route::post('serial_list', 'GMController@serialliststore')->name('seriallist.sto
 
 // item calculator
 Route::get('item_calculator', 'GMController@itemcalculator')->name('itemcalculator.index');
-
