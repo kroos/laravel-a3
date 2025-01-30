@@ -24,16 +24,17 @@
             @csrf
 
             <div class="form-group row">
-                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                <!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label> -->
+                <!-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> -->
+                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                 <div class="col-md-6">
-                    <input id="email" type="text" class="form-control{{ $errors->has('c_headerb') ? ' is-invalid' : '' }}" name="c_headerb" value="{{ old('c_headerb') }}">
-                    <!-- <input id="email" type="text" class="form-control{{ $errors->has('c_id') ? ' is-invalid' : '' }}" name="c_id" value="{{ old('c_id') }}"> -->
+                    <!-- <input id="email" type="text" class="form-control{{ $errors->has('c_headerb') ? ' is-invalid' : '' }}" name="c_headerb" value="{{ old('c_headerb') }}"> -->
+                    <input id="email" type="text" class="form-control{{ $errors->has('c_id') ? ' is-invalid' : '' }}" name="c_id" value="{{ old('c_id') }}">
 
                     @if ($errors->has('c_headerb'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('c_headerb') }}</strong>
+                            <strong>{{ $errors->first('c_id') }}</strong>
                         </span>
                     @endif
                 </div>

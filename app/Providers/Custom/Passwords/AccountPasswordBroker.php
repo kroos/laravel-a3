@@ -38,6 +38,7 @@ class AccountPasswordBroker extends BasePasswordBroker implements PasswordBroker
     {
         $this->users = $users;
         $this->tokens = $tokens;
+        // dd($this->users, $this->tokens);
     }
 
     /**
@@ -46,8 +47,9 @@ class AccountPasswordBroker extends BasePasswordBroker implements PasswordBroker
      * @param  array  $credentials
      * @return string
      */
-    public function sendResetLink(array $credentials)
+    public function sendResetLink(array $credentials, ?Closure $callback = NULL)
     {
+        // dd($credentials);
         // First we will check to see if we found a user at the given credentials and
         // if we did not we will redirect back to this current URI with a piece of
         // "flash" data in the session to indicate to the developers the errors.

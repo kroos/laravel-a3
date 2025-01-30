@@ -3,9 +3,7 @@
 namespace App\Providers\Custom;
 
 use Illuminate\Support\ServiceProvider;
-
 use Illuminate\Contracts\Support\DeferrableProvider;
-
 use App\Providers\Custom\Passwords\AccountPasswordBrokerManager;
 
 class AccountPasswordResetServiceProvider extends ServiceProvider implements DeferrableProvider

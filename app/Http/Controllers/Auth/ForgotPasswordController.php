@@ -28,30 +28,37 @@ class ForgotPasswordController extends Controller
     protected function validateEmail(Request $request)
     {
         $request->validate([
-            'c_headerb' => 'required|email|exists:Account,c_headerb,c_status,A',                                          // rules
+            // 'c_headerb' => 'required|email|exists:Account,c_headerb,c_status,A',                                          // rules
+            'c_id' => 'required|string|exists:Account,c_id,c_status,A',                                          // rules
         ], [
-            'c_headerb.exists' => 'The selected account is invalid or the account has been disabled or banned.'      // messages
+            // 'c_headerb.exists' => 'The selected account is invalid or the account has been disabled or banned.'      // messages
+            'c_id.exists' => 'The selected account is invalid or the account has been disabled or banned.'      // messages
         ], [
-            'c_headerb' => 'E-Mail Address'                                                                          // attributes
+            // 'c_headerb' => 'E-Mail Address'                                                                          // attributes
+            'c_id' => 'Username'                                                                          // attributes
         ]);
     }
 
     protected function credentials(Request $request)
     {
-        return $request->only('c_headerb');
+        // return $request->only('c_headerb');
+        return $request->only('c_id');
     }
 
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         if ($request->wantsJson()) {
             throw ValidationException::withMessages([
-                'c_headerb' => [trans($response)],
+                // 'c_headerb' => [trans($response)],
+                'c_id' => [trans($response)],
             ]);
         }
 
         return back()
-                ->withInput($request->only('c_headerb'))
-                ->withErrors(['c_headerb' => trans($response)]);
+                // ->withInput($request->only('c_headerb'))
+                // ->withErrors(['c_headerb' => trans($response)]);
+                ->withInput($request->only('c_id'))
+                ->withErrors(['c_id' => trans($response)]);
     }
 
 }
