@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        'passwords' => 'Account',
     ],
 
     /*
@@ -38,12 +38,12 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'Account',
         ],
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'Account',
             'hash' => false,
         ],
     ],
@@ -66,13 +66,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Model\Account::class,
-        ],
+        // 'Account' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Model\Account::class,
+        // ],
 
         // using this to override Illuminate\Auth\EloquentUserProvider
-        'users' => [
+        'Account' => [
             'driver' => 'accountuserprovider',
             'model' => App\Model\Account::class,
             'table' => 'Account',
@@ -95,7 +95,7 @@ return [
     */
 
     'passwords' => [
-        'users' => [
+        'Account' => [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,

@@ -57,16 +57,16 @@ class Account extends Authenticatable implements MustVerifyEmail
 		'email_verified_at' => 'datetime',
 	];
 
-	public function getAuthIdentifierName()
-	{
-		return 'c_id';
-	}
+	// public function getAuthIdentifierName()
+	// {
+	// 	return 'c_id';
+	// }
 
-	// for password
-	public function getAuthPassword()
-	{
-		return $this->c_headera;
-	}
+	// // for password
+	// public function getAuthPassword()
+	// {
+	// 	return $this->c_headera;
+	// }
 
     /**
      * Get the e-mail address where password reset links are sent.
